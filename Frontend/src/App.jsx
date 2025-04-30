@@ -14,6 +14,8 @@ import Ticket from './pages/ticket.jsx'
 import DocumentScanner from './componets/AI OCR/DocumentScanner.jsx';
 import Detailsappointment from './pages/ApointmentGrama.jsx';
 import Userappointment from './pages/ApointmentUser.jsx';
+import VillagerDashboard from './pages/VillagerDashboard.jsx';
+import GramaNiladhariDashboard from './pages/GramaNiladhariDashboard.jsx';
 
 
 function App() {
