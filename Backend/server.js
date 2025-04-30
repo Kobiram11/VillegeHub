@@ -43,7 +43,8 @@ const procedureRoutes = require('./routes/procedureRoutes');
 const noticeRouter = require('./routes/noticeRoutes');
 const ticketsRouter = require('./routes/tickets');
 const tuser = require('./routes/tusers.js')
-
+const appointmentRoutes = require('./routes/appointmentRoutes');
+const userRoutes = require('./routes/UserRoutes');
 
 // Use the api routes
 app.use('/api', housesRoute);
@@ -53,3 +54,5 @@ app.use('/procedures',procedureRoutes);
 app.use('/notice', noticeRouter);
 app.use('/tickets', ticketsRouter);
 app.use('/tuser',tuser);
+app.use('/Appointment', appointmentRoutes);
+app.use('/users', userRoutes);

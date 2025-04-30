@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Confirmation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #4CAF50;
+    }
+    .appointment-details {
+      margin-top: 20px;
+    }
+    .appointment-details td {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Appointment Confirmation</h1>
+    <p>Dear <%= user.name %>,</p>
+
+    <p>We are pleased to confirm your appointment with the following details:</p>
+
+    <table class="appointment-details">
+      <tr>
+        <td><strong>Appointment ID:</strong></td>
+        <td><%= appointmentId %></td>
+      </tr>
+      <tr>
+        <td><strong>Date:</strong></td>
+        <td><%= date %></td>
+      </tr>
+      <tr>
+        <td><strong>Time:</strong></td>
+        <td><%= time %></td>
+      </tr>
+      <tr>
+        <td><strong>Purpose:</strong></td>
+        <td><%= purpose %></td>
+      </tr>
+      <tr>
+        <td><strong>Contact:</strong></td>
+        <td><%= contact %></td>
+      </tr>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td><%= email %></td>
+      </tr>
+    </table>
+
+    <p>If you have any questions, feel free to contact us.</p>
+
+    <p>Best regards,</p>
+    <p>Your Company Team</p>
+  </div>
+</body>
+</html>
