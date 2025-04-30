@@ -32,3 +32,15 @@ mongoose.connect(URL)
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`);
 });
+
+
+
+// Import the routes
+const housesRoute = require('./routes/houses');
+
+
+
+
+
+// Use the api routes
+app.use('/api', housesRoute);
