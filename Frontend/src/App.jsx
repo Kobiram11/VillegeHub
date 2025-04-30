@@ -9,6 +9,10 @@ import HouseholdPage from './pages/householdPage.jsx';
 import Filedvisit from './pages/Filedvisit.jsx';
 import NoticeResident from './pages/NoticeResident.jsx';
 import NoticeGramaNiladhari from './pages/NoticeGramaNiladhari.jsx';
+import DocumentScanner from './componets/AI OCR/DocumentScanner.jsx';
+import Detailsappointment from './pages/ApointmentGrama.jsx';
+import Userappointment from './pages/ApointmentUser.jsx';
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +21,13 @@ function App() {
     <Router>
 
       <Routes>
+
+
+      <Route path="/" element={<VillagerDashboard/>} />
+      <Route path="/villagerDashboard" element={<VillagerDashboard/>} />
+      <Route path="/gramaniladharidashboard" element={<GramaNiladhariDashboard/>} />
+      <Route path="/villagerhome" element={<VillagerDashboard/>} />
+
       <Route path ="/voter-rights-request" element={<ElectionVil/>} />
       <Route path= "/election" element={<ElectionGrama/>} />
 
@@ -29,7 +40,11 @@ function App() {
       <Route path= "/notices" element= {<NoticeResident/>} />
       <Route path= "/gramaNotices" element= {<NoticeGramaNiladhari/>} />
 
+      <Route path= "/DocumentScanner" element={<DocumentScanner />} />
 
+      
+      <Route path= "/appointments" element={<Detailsappointment/>} />
+      <Route path= "/villagerappointments" element={<Userappointment/>} />
 
       </Routes>
 
