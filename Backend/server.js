@@ -40,6 +40,7 @@ const housesRoute = require('./routes/houses');
 const fieldVisitRoutes = require('./routes/filedvisit');
 const electionRoutes = require('./routes/electionRoutes');
 const procedureRoutes = require('./routes/procedureRoutes');
+const noticeRouter = require('./routes/noticeRoutes');
 
 
 // Use the api routes
@@ -47,3 +48,4 @@ app.use('/api', housesRoute);
 app.use('/field', fieldVisitRoutes);
 app.use('/election', electionRoutes);
 app.use('/procedures',procedureRoutes);
+app.use('/notice', noticeRouter);
