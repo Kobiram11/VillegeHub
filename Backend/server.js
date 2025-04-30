@@ -38,10 +38,12 @@ app.listen(PORT, () => {
 // Import the routes
 const housesRoute = require('./routes/houses');
 const fieldVisitRoutes = require('./routes/filedvisit');
-
-
+const electionRoutes = require('./routes/electionRoutes');
+const procedureRoutes = require('./routes/procedureRoutes');
 
 
 // Use the api routes
 app.use('/api', housesRoute);
 app.use('/field', fieldVisitRoutes);
+app.use('/election', electionRoutes);
+app.use('/procedures',procedureRoutes);
