@@ -41,6 +41,8 @@ const fieldVisitRoutes = require('./routes/filedvisit');
 const electionRoutes = require('./routes/electionRoutes');
 const procedureRoutes = require('./routes/procedureRoutes');
 const noticeRouter = require('./routes/noticeRoutes');
+const ticketsRouter = require('./routes/tickets');
+const tuser = require('./routes/tusers.js')
 
 
 // Use the api routes
@@ -49,3 +51,5 @@ app.use('/field', fieldVisitRoutes);
 app.use('/election', electionRoutes);
 app.use('/procedures',procedureRoutes);
 app.use('/notice', noticeRouter);
+app.use('/tickets', ticketsRouter);
+app.use('/tuser',tuser);
