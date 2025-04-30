@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Cancellation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background-color: #fff5f5;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #f5c2c7;
+      border-radius: 10px;
+      background-color: #ffe3e3;
+    }
+    h1 {
+      color: #d32f2f;
+    }
+    .appointment-details {
+      margin-top: 20px;
+    }
+    .appointment-details td {
+      padding: 5px 10px;
+    }
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Appointment Cancellation</h1>
+    <p>Dear <%= user.name %>,</p>
+
+    <p>We regret to inform you that your appointment has been cancelled. Here are the details:</p>
+
+    <table class="appointment-details">
+      <tr>
+        <td><strong>Appointment ID:</strong></td>
+        <td><%= appointmentId %></td>
+      </tr>
+      <tr>
+        <td><strong>Date:</strong></td>
+        <td><%= date %></td>
+      </tr>
+      <tr>
+        <td><strong>Time:</strong></td>
+        <td><%= time %></td>
+      </tr>
+      <tr>
+        <td><strong>Purpose:</strong></td>
+        <td><%= purpose %></td>
+      </tr>
+      <tr>
+        <td><strong>Contact:</strong></td>
+        <td><%= contact %></td>
+      </tr>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td><%= email %></td>
+      </tr>
+    </table>
+
+    <p>If this was a mistake or you need to reschedule, please contact us.</p>
+
+    <div class="footer">
+      <p>&copy; 2024 Your Company Team. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
