@@ -1,0 +1,145 @@
+/* NavBar.css */
+
+/* General layout for the app */
+/*.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}*/
+
+/* Top navigation */
+.top-nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #8B4513; /* Rich Saddle Brown for top nav bar */
+  padding: 10px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.top-nav a {
+  color: #f7f6f5; /* Golden yellow for nav links */
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.top-nav a:hover {
+  background-color: #FF8C00; /* Vivid orange for hover effect */
+}
+
+/* Sidebar */
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  width: 80px; /* Default collapsed width */
+  background-color: #FFDEAD; /* Light Navajo White for sidebar background */
+  color: #8B4513; /* Rich Saddle Brown for sidebar text */
+  transition: width 0.3s ease;
+  overflow-y: auto;
+  position: fixed;
+  top: 50px; /* Position the sidebar below the top nav */
+  left: 0;
+  height: calc(100vh - 50px); /* Leave space for the top navigation */
+  z-index: 5; /* Sidebar behind the top nav */
+}
+
+.side-nav.open {
+  width: 250px; /* Expanded width */
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px; /* Add space above the first link */
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align icons and text to the left when expanded */
+  padding: 15px 20px; /* More padding for spacing */
+  text-decoration: none;
+  color: #8B4513; /* Saddle Brown for text */
+  font-weight: bold; /* Make text bold */
+  transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  overflow: hidden; /* Prevent overflowing text */
+  text-overflow: ellipsis; /* Add ellipsis (...) for long text */
+}
+
+.nav-links a:hover {
+  background-color: #FFA07A; /* Light Coral for sidebar item hover */
+}
+
+.nav-icon {
+  margin-right: 20px; /* Larger gap between the icon and text */
+  font-size: 1.5em; /* Larger icon size */
+}
+
+.side-nav.open .nav-links a {
+  justify-content: flex-start; /* Align icons and text when expanded */
+}
+
+.side-nav.collapsed .nav-icon {
+  margin-right: 0;
+}
+
+.side-nav.collapsed a span {
+  display: none; /* Hide the text when collapsed */
+}
+
+.side-nav.open a span {
+  display: inline; /* Show text when expanded */
+  font-size: 1.1rem; /* Adjust the font size when sidebar is expanded */
+}
+
+.nav-links a.active {
+  background-color: #FF8C00; /* Bright orange for active item */
+}
+
+/* Prevent text from wrapping to the next line */
+.side-nav.open a span {
+  white-space: nowrap; /* Ensure text stays on one line */
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; /* Show ellipsis if text is too long */
+  max-width: calc(100% - 50px); /* Ensure text fits properly with the icon gap */
+}
+
+.nav-links a:hover span {
+  font-size: 1rem; /* Slightly decrease font size to fit better on hover */
+}
+
+/* Main content */
+.content {
+  flex-grow: 1;
+  margin-left: 80px; /* Space for the collapsed sidebar */
+  padding: 20px;
+  padding-top: 70px; /* Leave space for the top navigation */
+  background-color: #FDF5E6; /* Light beige background for main content */
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
+}
+
+.side-nav.open ~ .content {
+  margin-left: 250px; /* Adjust margin when sidebar is expanded */
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+  .side-nav {
+    width: 80px;
+  }
+
+  .side-nav.open {
+    width: 200px; /* Smaller expanded width on mobile */
+  }
+
+  .content {
+    margin-left: 80px; /* Keep content aligned properly on mobile */
+  }
+}
