@@ -9,6 +9,8 @@ import HouseholdPage from './pages/householdPage.jsx';
 import Filedvisit from './pages/Filedvisit.jsx';
 import NoticeResident from './pages/NoticeResident.jsx';
 import NoticeGramaNiladhari from './pages/NoticeGramaNiladhari.jsx';
+import TicketVill from './pages/createeticket.jsx';
+import Ticket from './pages/ticket.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,7 +30,9 @@ function App() {
 
       <Route path= "/notices" element= {<NoticeResident/>} />
       <Route path= "/gramaNotices" element= {<NoticeGramaNiladhari/>} />
-
+      
+      <Route path ="/villagertickets" element={<TicketVill/>} />
+      <Route path= "/tickets" element={<Ticket/>} />
 
 
       </Routes>
