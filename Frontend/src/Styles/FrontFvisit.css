@@ -1,0 +1,74 @@
+.front-fvisit-container {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .front-fvisit-heading {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .front-fvisit-form-calendar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .front-fvisit-form {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+  }
+  
+  .front-fvisit-calendar {
+    flex: 2;
+    min-width: 300px;
+  }
+  
+  .front-fvisit-calendar-custom {
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .front-fvisit-highlight {
+    background-color: #cce5ff !important;
+    border-radius: 50%;
+  }
+  
+  .front-fvisit-visit-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .front-fvisit-visit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+  }
+  
+  .front-fvisit-visit-details {
+    flex: 1;
+  }
+  
+  .front-fvisit-button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
