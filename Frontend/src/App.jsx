@@ -5,6 +5,8 @@ import ElectionVil from './pages/electionVill.jsx'
 import ElectionGrama from './pages/electionGrama.jsx';
 import ProceduresGrama from './pages/ProceduresGrama.jsx';
 import ProceduresVil from './pages/ProceduresVil.jsx';
+import HouseholdPage from './pages/householdPage.jsx';
+import Filedvisit from './pages/Filedvisit.jsx';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,6 +21,8 @@ function App() {
       <Route path= "/procedures" element={<ProceduresGrama/>} />
       <Route path= "/villagerprocedures" element={<ProceduresVil/>} />
 
+      <Route path="/household-data" element={<HouseholdPage />} />
+      <Route path="/field-visits" element={<Filedvisit />} />
 
 
 
