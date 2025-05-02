@@ -10,6 +10,7 @@ import Filedvisit from './pages/Filedvisit.jsx';
 import NoticeResident from './pages/NoticeResident.jsx';
 import NoticeGramaNiladhari from './pages/NoticeGramaNiladhari.jsx';
 import TicketVill from './pages/createeticket.jsx';
+import Ticket from './pages/ticket.jsx';
 import DocumentScanner from './componets/AI OCR/DocumentScanner.jsx';
 import Detailsappointment from './pages/ApointmentGrama.jsx';
 import Userappointment from './pages/ApointmentUser.jsx';
@@ -44,6 +45,7 @@ function App() {
       <Route path= "/gramaNotices" element= {<NoticeGramaNiladhari/>} />
       
       <Route path ="/villagertickets" element={<TicketVill/>} />
+      <Route path= "/tickets" element={<Ticket/>} />
 
       <Route path= "/DocumentScanner" element={<DocumentScanner />} />
 
