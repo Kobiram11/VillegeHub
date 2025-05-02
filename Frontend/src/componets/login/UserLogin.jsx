@@ -37,6 +37,7 @@ const UserLogin = () => {
       console.log('Login successful:', user);
 
       localStorage.setItem('authToken', token);
+      localStorage.setItem('user', JSON.stringify(user));
 
       switch (user.userType) {
         case 'Resident':
