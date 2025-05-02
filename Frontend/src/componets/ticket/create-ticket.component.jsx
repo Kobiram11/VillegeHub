@@ -2,21 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../../Styles/TicketStyle.css';
+import '../../Styles/TicketStyle.css'; // Make sure this file uses the new class names
 
 const categories = ['Technical', 'Billing', 'General', 'Support', 'Other'];
 
 export default class NewTicketForm extends Component {
     constructor(props) {
         super(props);
-
-        this.onChangeName = this.onChangeName.bind(this);
-        this.onChangeAddress = this.onChangeAddress.bind(this);
-        this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangeCategory = this.onChangeCategory.bind(this);
-        this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             name: '',
@@ -25,161 +17,132 @@ export default class NewTicketForm extends Component {
             email: '',
             category: '',
             description: '',
-            userEmail: 'user@example.com' // Simulate logged-in user; replace with actual auth
+            userEmail: 'user@example.com'
         };
     }
 
     componentDidMount() {
-        this.setState({
-            category: categories[0]
-        });
+        this.setState({ category: categories[0] });
     }
 
-    onChangeName(e) {
-        this.setState({ name: e.target.value });
-    }
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+    };
 
-    onChangeAddress(e) {
-        this.setState({ address: e.target.value });
-    }
-
-    onChangePhoneNumber(e) {
-        this.setState({ phoneNumber: e.target.value });
-    }
-
-    onChangeEmail(e) {
-        this.setState({ email: e.target.value });
-    }
-
-    onChangeCategory(e) {
-        this.setState({ category: e.target.value });
-    }
-
-    onChangeDescription(e) {
-        this.setState({ description: e.target.value });
-    }
-
-    onSubmit(e) {
+    onSubmit = (e) => {
         e.preventDefault();
 
-        const ticket = {
-            name: this.state.name,
-            address: this.state.address,
-            phoneNumber: this.state.phoneNumber,
-            email: this.state.email,
-            category: this.state.category,
-            description: this.state.description
-        };
+        const ticket = { ...this.state };
 
         axios.post('http://localhost:8070/api/tickets', ticket, {
-            headers: {
-                'user-email': this.state.userEmail
-            }
+            headers: { 'user-email': this.state.userEmail }
         })
-            .then(res => {
-                console.log(res.data);
-                toast.success('Ticket created successfully!', {
-                    position: 'top-right',
-                    autoClose: 3000,
-                });
-                this.setState({
-                    name: '',
-                    address: '',
-                    phoneNumber: '',
-                    email: '',
-                    category: categories[0],
-                    description: ''
-                });
-            })
-            .catch(error => {
-                console.error('Error creating ticket:', error);
-                toast.error('Failed to create ticket.', {
-                    position: 'top-right',
-                    autoClose: 3000,
-                });
+        .then(res => {
+            toast.success('Ticket created successfully!', { position: 'top-right', autoClose: 3000 });
+            this.setState({
+                name: '',
+                address: '',
+                phoneNumber: '',
+                email: '',
+                category: categories[0],
+                description: ''
             });
-    }
+        })
+        .catch(err => {
+            toast.error('Failed to create ticket.', { position: 'top-right', autoClose: 3000 });
+        });
+    };
 
     render() {
         return (
-            <div className="ticket-form-container">
+            <div className="ticket-villeger-container">
                 <ToastContainer />
-                <h3>Submit a Ticket</h3>
-                <p>Fill out the form below to raise a new ticket.</p>
+                <h3 className="ticket-villeger-heading">Submit a Ticket</h3>
+                <p className="ticket-villeger-subtext">Fill out the form below to raise a new ticket.</p>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Name <span className="required">*</span></label>
+                    <div className="ticket-villeger-form-group">
+                        <label>Name <span className="ticket-villeger-required">*</span></label>
                         <input
                             type="text"
-                            className="form-control"
+                            name="name"
+                            className="ticket-villeger-input"
                             placeholder="Enter your full name"
                             value={this.state.name}
-                            onChange={this.onChangeName}
+                            onChange={this.handleChange}
                             required
                         />
                     </div>
-                    <div className="form-group">
+
+                    <div className="ticket-villeger-form-group">
                         <label>Address</label>
                         <input
                             type="text"
-                            className="form-control"
+                            name="address"
+                            className="ticket-villeger-input"
                             placeholder="Enter your address"
                             value={this.state.address}
-                            onChange={this.onChangeAddress}
+                            onChange={this.handleChange}
                             required
                         />
                     </div>
-                    <div className="form-group">
+
+                    <div className="ticket-villeger-form-group">
                         <label>Phone Number</label>
                         <input
                             type="tel"
-                            className="form-control"
+                            name="phoneNumber"
+                            className="ticket-villeger-input"
                             placeholder="Enter your phone number"
                             value={this.state.phoneNumber}
-                            onChange={this.onChangePhoneNumber}
+                            onChange={this.handleChange}
                             required
                         />
                     </div>
-                    <div className="form-group">
-                        <label>Email Address <span className="required">*</span></label>
+
+                    <div className="ticket-villeger-form-group">
+                        <label>Email Address <span className="ticket-villeger-required">*</span></label>
                         <input
                             type="email"
-                            className="form-control"
+                            name="email"
+                            className="ticket-villeger-input"
                             placeholder="Enter your email address"
                             value={this.state.email}
-                            onChange={this.onChangeEmail}
+                            onChange={this.handleChange}
                             required
                         />
                     </div>
-                    <div className="form-group">
-                        <label>Category <span className="required">*</span></label>
+
+                    <div className="ticket-villeger-form-group">
+                        <label>Category <span className="ticket-villeger-required">*</span></label>
                         <select
-                            className="form-control"
+                            name="category"
+                            className="ticket-villeger-select"
                             value={this.state.category}
-                            onChange={this.onChangeCategory}
+                            onChange={this.handleChange}
+                            required
                         >
-                            <option value="" disabled>Select issue category</option>
-                            {categories.map(category => (
-                                <option key={category} value={category}>
-                                    {category}
-                                </option>
+                            {categories.map(cat => (
+                                <option key={cat} value={cat}>{cat}</option>
                             ))}
                         </select>
                     </div>
-                    <div className="form-group">
-                        <label>Description <span className="required">*</span></label>
+
+                    <div className="ticket-villeger-form-group">
+                        <label>Description <span className="ticket-villeger-required">*</span></label>
                         <textarea
-                            className="form-control"
+                            name="description"
+                            className="ticket-villeger-textarea"
                             placeholder="Please describe your issue or enquiry in detail"
                             rows="4"
                             maxLength="250"
                             value={this.state.description}
-                            onChange={this.onChangeDescription}
+                            onChange={this.handleChange}
                             required
-                        ></textarea>
+                        />
                     </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn-submit">
+
+                    <div className="ticket-villeger-form-group">
+                        <button type="submit" className="ticket-villeger-submit-btn">
                             Submit Ticket
                         </button>
                     </div>

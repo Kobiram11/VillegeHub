@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../Styles/procedures.css';
-import ProceduresReportButton from './ProceduresReport';  // Import the report generation component
+import ProceduresReportButton from './ProceduresReport';
 
 const ProceduresList = () => {
   const [procedures, setProcedures] = useState([]);
@@ -23,46 +23,45 @@ const ProceduresList = () => {
     fetchProcedures();
   }, []);
 
-  // Filter procedures by search query
   const filteredProcedures = procedures.filter(procedure =>
     procedure.ServiceName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
-    <div className="procedures-list-container">
-      <h2>Procedures List</h2>
+    <div className="procedures-vill-list-container">
+      <h2 className="procedures-vill-heading">Procedures List</h2>
 
-      {/* Search bar */}
-      <div className="search-bar">
+      <div className="procedures-vill-search-bar">
         <input
           type="text"
           placeholder="Search by Service Name"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="search-input"
+          className="procedures-vill-search-input"
         />
       </div>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && <p className="procedures-vill-error-message">{errorMessage}</p>}
       
-      <ul className="procedures-list">
+      <ul className="procedures-vill-list">
         {filteredProcedures.length > 0 ? (
           filteredProcedures.map(procedure => (
-            <li key={procedure._id} className="procedure-item">
-              <div>
-                <strong>{procedure.ServiceName}</strong> {/* Display the Service Name */}
-                <p>{procedure.ServiceDetail}</p> {/* Display the Service Details */}
+            <li key={procedure._id} className="procedures-vill-item">
+              <div className="procedures-vill-content">
+                <strong className="procedures-vill-name">{procedure.ServiceName}</strong>
+                <p className="procedures-vill-detail">{procedure.ServiceDetail}</p>
               </div>
             </li>
           ))
         ) : (
-          <p>No procedures found matching your search.</p>
+          <p className="procedures-vill-no-results">No procedures found matching your search.</p>
         )}
       </ul>
 
-      {/* Add the report generation button */}
       {filteredProcedures.length > 0 && (
-        <ProceduresReportButton procedures={filteredProcedures} />
+        <div className="procedures-vill-report-button">
+          <ProceduresReportButton procedures={filteredProcedures} />
+        </div>
       )}
     </div>
   );

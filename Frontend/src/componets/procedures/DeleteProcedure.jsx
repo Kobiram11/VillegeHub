@@ -24,12 +24,11 @@ const DeleteProcedure = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:8070/procedures/${id}`);
-      // Adding fade-out animation when a procedure is deleted
-      document.getElementById(id).classList.add('fade-out');
+      document.getElementById(id).classList.add('procedures-delete-grama-fade-out');
       setTimeout(() => {
         setProcedures(procedures.filter(procedure => procedure._id !== id));
         setErrorMessage('');
-      }, 500); // Delay to allow animation to complete
+      }, 500);
     } catch (error) {
       console.error('Error deleting procedure:', error);
       setErrorMessage('Failed to delete procedure.');
@@ -37,19 +36,19 @@ const DeleteProcedure = () => {
   };
 
   return (
-    <div className="delete-procedure-container">
-      <h2>Delete Procedures</h2>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <ul className="procedure-list">
+    <div className="procedures-delete-grama-container">
+      <h2 className="procedures-delete-grama-title">Delete Procedures</h2>
+      {errorMessage && <p className="procedures-delete-grama-error">{errorMessage}</p>}
+      <ul className="procedures-delete-grama-list">
         {procedures.map(procedure => (
-          <li key={procedure._id} id={procedure._id} className="procedure-item">
-            <div className="procedure-details">
+          <li key={procedure._id} id={procedure._id} className="procedures-delete-grama-item">
+            <div className="procedures-delete-grama-details">
               <strong>{procedure.ServiceName}</strong>
               <p>{procedure.ServiceDetail}</p>
             </div>
             <button
               onClick={() => handleDelete(procedure._id)}
-              className="delete-button"
+              className="procedures-delete-grama-button"
             >
               Delete
             </button>

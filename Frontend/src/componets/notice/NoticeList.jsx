@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../Styles/Notice/FindNotice.css';
 
-const NoticeList = () => {
+const ListNoticeGrama = () => {
   const [notices, setNotices] = useState([]);
   const [filteredNotices, setFilteredNotices] = useState([]);
   const [editNoticeId, setEditNoticeId] = useState(null);
@@ -111,10 +111,10 @@ const NoticeList = () => {
   };
 
   return (
-    <div className="notice-list-container">
+    <div className="list-notice-grama-container">
       <h2>Notice List</h2>
 
-      <table className="notice-list-table">
+      <table className="list-notice-grama-table">
         <thead>
           <tr>
             <th>Custom ID</th>
@@ -132,9 +132,9 @@ const NoticeList = () => {
               <td>{notice.description}</td>
               <td>{new Date(notice.createdAt).toLocaleDateString()}</td>
               <td>
-                <div className="notice-action-buttons">
-                  <button className="notice-edit-btn" onClick={() => handleEditClick(notice)}>Edit</button>
-                  <button className="notice-delete-btn" onClick={() => handleDelete(notice._id)}>Delete</button>
+                <div className="list-notice-grama-action-buttons">
+                  <button className="list-notice-grama-edit-btn" onClick={() => handleEditClick(notice)}>Edit</button>
+                  <button className="list-notice-grama-delete-btn" onClick={() => handleDelete(notice._id)}>Delete</button>
                 </div>
               </td>
             </tr>
@@ -143,28 +143,28 @@ const NoticeList = () => {
       </table>
 
       {editNoticeId && (
-        <form onSubmit={handleUpdate} className="notice-edit-form">
+        <form onSubmit={handleUpdate} className="list-notice-grama-edit-form">
           <input type="text" name="id" value={editData.id} onChange={handleInputChange} placeholder="Custom ID" required />
           <input type="text" name="noticeCategory" value={editData.noticeCategory} onChange={handleInputChange} placeholder="Notice Category" required />
           <textarea name="description" value={editData.description} onChange={handleInputChange} placeholder="Description" required />
-          <button type="submit" className="notice-edit-btn">Update Notice</button>
+          <button type="submit" className="list-notice-grama-edit-btn">Update Notice</button>
         </form>
       )}
 
-      <form onSubmit={handleFilterSubmit} className="notice-filter-form">
+      <form onSubmit={handleFilterSubmit} className="list-notice-grama-filter-form">
         <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} required>
           <option value="">Select Notice Category</option>
           {noticeCategories.map((category, index) => (
             <option key={index} value={category}>{category}</option>
           ))}
         </select>
-        <button type="submit" className="notice-edit-btn">Filter Notices</button>
+        <button type="submit" className="list-notice-grama-edit-btn">Filter Notices</button>
       </form>
 
       {filteredNotices.length > 0 && (
         <div>
           <h3>Filtered Notices</h3>
-          <table className="notice-list-table">
+          <table className="list-notice-grama-table">
             <thead>
               <tr>
                 <th>Custom ID</th>
@@ -184,11 +184,11 @@ const NoticeList = () => {
               ))}
             </tbody>
           </table>
-          <button onClick={handleDownloadPDF} className="notice-download-btn">Download the PDF</button>
+          <button onClick={handleDownloadPDF} className="list-notice-grama-download-btn">Download the PDF</button>
         </div>
       )}
     </div>
   );
 };
 
-export default NoticeList;
+export default ListNoticeGrama;

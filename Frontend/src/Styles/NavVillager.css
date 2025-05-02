@@ -1,145 +1,138 @@
-
 /* Top Navigation */
 .villager-top-nav {
-    display: flex;
-    justify-content:flex-end;
-    background-color: #8B4513; /* Rich Saddle Brown for top nav bar */
-    padding: 10px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    margin-left: 0px;
-    z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #8B4513; /* Rich Saddle Brown */
+  padding: 10px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+
+.vnav-item {
+  color: #f1e9e0;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.vnav-item:hover {
+  background-color: #FF8C00;
+  transform: scale(1.05);
+  color: #f1e9e0;
+  text-decoration: none;
+}
+
+/* Sidebar Styles */
+.villager-side-nav {
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  background-color: #FFDEAD;
+  color: #8B4513;
+  transition: width 0.3s ease;
+  overflow-y: auto;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  height: calc(100vh - 50px);
+  z-index: 1;
+  text-decoration: none;
+}
+
+.villager-side-nav.open {
+  width: 200px;
+}
+
+.villager-side-nav.collapsed {
+  width: 80px;
+}
+
+.villager-nav-links {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.villager-nav-links .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #8B4513;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.villager-nav-links .nav-link:hover {
+  background-color: #FFA07A;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+.villager-nav-links .nav-link.active {
+  background-color: #e7602a;
+  color: white;
+}
+
+.nav-icon {
+  margin-right: 20px;
+  font-size: 1.5em;
+}
+
+/* Show/hide text inside sidebar */
+.villager-side-nav.open .villager-nav-links .nav-link {
+  justify-content: flex-start;
+}
+
+.villager-side-nav.collapsed .nav-icon {
+  margin-right: 0;
+}
+
+.villager-side-nav.collapsed .nav-link span {
+  display: none;
+}
+
+.villager-side-nav.open .nav-link span {
+  display: inline;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 50px);
+}
+
+.villager-nav-links .nav-link:hover span {
+  font-size: 1rem;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .villager-top-nav {
+    flex-direction: column;
+    padding: 10px 0;
   }
-  
+
   .vnav-item {
-    color: #f1e9e0; /* Golden yellow for nav links */
-    text-decoration: none;
-    padding: 10px;
-    transition: background-color 0.3s ease;
-    font-weight: bold;
+    font-size: 16px;
   }
-  
-  .vnav-item:hover {
-    background-color: #FF8C00; /* Slightly lighter background on hover */
-    transform: scale(1.05);
-    color: #f1e9e0; /* Slightly enlarge on hover */
-    text-decoration: none;
-  }
-  
-  /* Sidebar Styles */
+
   .villager-side-nav {
-    display: flex;
-    flex-direction: column;
-    width: 80px; /* Default collapsed width */
-    background-color: #FFDEAD; /* Light Navajo White for sidebar background */
-    color: #8B4513; /* Rich Saddle Brown for sidebar text */
-    transition: width 0.3s ease;
-    overflow-y: auto;
-    position: fixed;
-    top: 50px; /* Position the sidebar below the top nav */
-    left: 0;
-    height: calc(100vh - 50px); /* Leave space for the top navigation */
-    z-index: 1; /* Sidebar behind the top nav */
-    text-decoration: none;
+    width: 50px;
   }
-  
+
   .villager-side-nav.open {
-    width: 200px; /* Expanded width */
+    width: 180px;
   }
-  
-  .villager-nav-links {
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-    
-  }
-  
-  .nav-link {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* Align icons and text to the left when expanded */
-    padding: 15px 20px; /* More padding for spacing */
-    text-decoration: none;
-    color: #8B4513; /* Saddle Brown for text */
-    font-weight: bold; /* Make text bold */
-    transition: background-color 0.3s ease;
-    font-size: 1.1rem;
-    white-space: nowrap; /* Prevent text from wrapping to the next line */
-    overflow: hidden; /* Prevent overflowing text */
-    text-overflow: ellipsis; /* Add ellipsis (...) for long text */
-    text-decoration: none;
-  }
-  
-  .nav-link:hover {
-    background-color: #FFA07A;/* Highlight color on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    text-decoration: none;
-  }
-  
-  .nav-link.active {
-    background-color: #e7602a; /* Active link background in bright orange */
-  }
-  
+
   .nav-icon {
-    margin-right: 20px; /* Space between icon and text */
-    
-    font-size: 1.5em; /* Increased icon size */
+    font-size: 18px;
   }
-  
-  
-  .side-nav.open .nav-links a {
-    justify-content: flex-start; /* Align icons and text when expanded */
-  }
-  
-  .side-nav.collapsed .nav-icon {
-    margin-right: 0;
-  }
-  
-  .side-nav.collapsed a span {
-    display: none; /* Hide the text when collapsed */
-  }
-  
-  .side-nav.open a span {
-    display: inline; /* Show text when expanded */
-    font-size: 1.1rem; /* Adjust the font size when sidebar is expanded */
-  
-  }
-  
-  
-  /* Prevent text from wrapping to the next line */
-  .side-nav.open a span {
-    white-space: nowrap; /* Ensure text stays on one line */
-    overflow: hidden; /* Hide overflowing text */
-    text-overflow: ellipsis; /* Show ellipsis if text is too long */
-    max-width: calc(100% - 50px); /* Ensure text fits properly with the icon gap */
-  }
-  
-  .nav-links a:hover span {
-    font-size: 1rem; /* Slightly decrease font size to fit better on hover */
-  }
-  
-  /* Adjustments for smaller screens */
-  @media (max-width: 768px) {
-    .villager-top-nav {
-        flex-direction: column;
-        padding: 10px 0;
-    }
-  
-    .nav-item {
-        font-size: 16px; /* Smaller font for mobile */
-    }
-  
-    .villager-side-nav {
-        width: 50px; /* Further reduced collapsed width */
-    }
-  
-    .villager-side-nav.open {
-        width: 180px; /* Further reduced expanded width */
-    }
-  
-    .nav-icon {
-        font-size: 18px; /* Smaller icon size */
-    }
-  }
-  
+}

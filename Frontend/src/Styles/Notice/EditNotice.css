@@ -1,0 +1,201 @@
+/* EditNotice.css */
+
+/* Main Container */
+.edit-notice-grama-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  /* Heading */
+  .edit-notice-grama-heading {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .edit-notice-grama-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border-radius: 2px;
+  }
+  
+  /* Search Section */
+  .edit-notice-grama-search-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .edit-notice-grama-input {
+    flex: 1;
+    padding: 0.75rem 1.25rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  .edit-notice-grama-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+  
+  .edit-notice-grama-button {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+  }
+  
+  .edit-notice-grama-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+  }
+  
+  /* Form */
+  .edit-notice-grama-form {
+    margin-top: 1.5rem;
+    animation: slideIn 0.5s ease;
+  }
+  
+  .edit-notice-grama-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 500;
+  }
+  
+  .edit-notice-grama-select,
+  .edit-notice-grama-textarea {
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    margin-bottom: 1.5rem;
+    font-family: inherit;
+  }
+  
+  .edit-notice-grama-select:focus,
+  .edit-notice-grama-textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+  
+  .edit-notice-grama-textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  /* Button Group */
+  .edit-notice-grama-button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .edit-notice-grama-button-group .edit-notice-grama-button {
+    flex: 1;
+    padding: 0.75rem;
+  }
+  
+  .edit-notice-grama-button-group .edit-notice-grama-button:first-child {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+  }
+  
+  .edit-notice-grama-button-group .edit-notice-grama-button:first-child:hover {
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+  }
+  
+  .edit-notice-grama-button-group .edit-notice-grama-button:last-child {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+  }
+  
+  .edit-notice-grama-button-group .edit-notice-grama-button:last-child:hover {
+    box-shadow: 0 5px 15px rgba(149, 165, 166, 0.4);
+  }
+  
+  /* Messages */
+  .edit-notice-grama-loading {
+    text-align: center;
+    color: #3498db;
+    margin: 1rem 0;
+    font-weight: 500;
+  }
+  
+  .edit-notice-grama-error {
+    text-align: center;
+    color: #e74c3c;
+    padding: 0.75rem;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 8px;
+    margin: 1rem 0;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .edit-notice-grama-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+    
+    .edit-notice-grama-search-section {
+      flex-direction: column;
+    }
+    
+    .edit-notice-grama-button-group {
+      flex-direction: column;
+    }
+    
+    .edit-notice-grama-button {
+      width: 100%;
+    }
+  }

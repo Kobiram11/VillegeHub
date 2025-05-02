@@ -1,0 +1,529 @@
+/* FindNotice.css */
+
+/* Main Container */
+.find-notice-grama-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  /* Title */
+  .find-notice-grama-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .find-notice-grama-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border-radius: 2px;
+  }
+  
+  /* Search Section */
+  .find-notice-grama-search {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .find-notice-grama-input {
+    flex: 1;
+    padding: 0.75rem 1.25rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  .find-notice-grama-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+  
+  .find-notice-grama-button {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+  }
+  
+  .find-notice-grama-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+  }
+  
+  /* Notice Details Card */
+  .find-notice-grama-details-card {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    border-left: 4px solid #3498db;
+    animation: slideIn 0.5s ease;
+  }
+  
+  .find-notice-grama-details-title {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .find-notice-grama-details-card p {
+    margin-bottom: 0.75rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  .find-notice-grama-details-card strong {
+    color: #2c3e50;
+    font-weight: 600;
+  }
+  
+  /* Messages */
+  .find-notice-grama-loading {
+    text-align: center;
+    color: #3498db;
+    margin: 1rem 0;
+    font-weight: 500;
+  }
+  
+  .find-notice-grama-error {
+    text-align: center;
+    color: #e74c3c;
+    padding: 0.75rem;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 8px;
+    margin: 1rem 0;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .find-notice-grama-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+    
+    .find-notice-grama-search {
+      flex-direction: column;
+    }
+    
+    .find-notice-grama-button {
+      width: 100%;
+    }
+  }
+
+  /* ListNotice.css */
+
+/* Main Container */
+.list-notice-grama-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Headings */
+  .list-notice-grama-container h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .list-notice-grama-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border-radius: 2px;
+  }
+  
+  .list-notice-grama-container h3 {
+    color: #2c3e50;
+    margin: 2rem 0 1rem;
+    font-size: 1.5rem;
+  }
+  
+  /* Tables */
+  .list-notice-grama-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .list-notice-grama-table th,
+  .list-notice-grama-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .list-notice-grama-table th {
+    background-color: #3498db;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+  
+  .list-notice-grama-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  
+  .list-notice-grama-table tr:hover {
+    background-color: #f1f8fe;
+  }
+  
+  /* Action Buttons */
+  .list-notice-grama-action-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  /* Common Button Styles */
+  .list-notice-grama-edit-btn,
+  .list-notice-grama-delete-btn,
+  .list-notice-grama-download-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+  }
+  
+  /* Edit Button */
+  .list-notice-grama-edit-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+  }
+  
+  .list-notice-grama-edit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+  }
+  
+  /* Delete Button */
+  .list-notice-grama-delete-btn {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+  }
+  
+  .list-notice-grama-delete-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+  }
+  
+  /* Download Button */
+  .list-notice-grama-download-btn {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .list-notice-grama-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+  }
+  
+  /* Forms */
+  .list-notice-grama-edit-form,
+  .list-notice-grama-filter-form {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .list-notice-grama-edit-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .list-notice-grama-edit-form textarea {
+    grid-column: span 2;
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .list-notice-grama-edit-form button {
+    grid-column: span 2;
+    padding: 0.75rem;
+  }
+  
+  .list-notice-grama-filter-form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .list-notice-grama-filter-form select {
+    flex: 1;
+    padding: 0.75rem 1.25rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  .list-notice-grama-filter-form select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+  
+  /* Input Elements */
+  .list-notice-grama-edit-form input,
+  .list-notice-grama-edit-form textarea {
+    padding: 0.75rem 1.25rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+  }
+  
+  .list-notice-grama-edit-form input:focus,
+  .list-notice-grama-edit-form textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .list-notice-grama-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+    
+    .list-notice-grama-edit-form {
+      grid-template-columns: 1fr;
+    }
+    
+    .list-notice-grama-edit-form textarea,
+    .list-notice-grama-edit-form button {
+      grid-column: span 1;
+    }
+    
+    .list-notice-grama-filter-form {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .list-notice-grama-action-buttons {
+      flex-direction: column;
+    }
+    
+    .list-notice-grama-table {
+      display: block;
+      overflow-x: auto;
+    }
+  }
+
+
+  /* NoticeResidentView.css */
+
+/* Main Container */
+.list-notice-vill-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  /* Heading */
+  .list-notice-vill-heading {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .list-notice-vill-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border-radius: 2px;
+  }
+  
+  /* Notice List */
+  .list-notice-vill-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  /* Notice Card */
+  .list-notice-vill-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-left: 4px solid #3498db;
+    animation: slideUp 0.5s ease forwards;
+  }
+  
+  .list-notice-vill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Card Content */
+  .list-notice-vill-text {
+    margin-bottom: 0.8rem;
+    color: #555;
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
+  
+  .list-notice-vill-text strong {
+    color: #2c3e50;
+    font-weight: 600;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Staggered Animation for Cards */
+  .list-notice-vill-card:nth-child(1) { animation-delay: 0.1s; }
+  .list-notice-vill-card:nth-child(2) { animation-delay: 0.2s; }
+  .list-notice-vill-card:nth-child(3) { animation-delay: 0.3s; }
+  .list-notice-vill-card:nth-child(4) { animation-delay: 0.4s; }
+  .list-notice-vill-card:nth-child(5) { animation-delay: 0.5s; }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .list-notice-vill-container {
+      padding: 1.5rem;
+    }
+    
+    .list-notice-vill-heading {
+      font-size: 1.8rem;
+    }
+    
+    .list-notice-vill-list {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .list-notice-vill-container {
+      padding: 1rem;
+    }
+    
+    .list-notice-vill-heading {
+      font-size: 1.5rem;
+    }
+    
+    .list-notice-vill-card {
+      padding: 1.2rem;
+    }
+  }

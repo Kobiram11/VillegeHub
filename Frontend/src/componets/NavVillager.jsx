@@ -29,7 +29,7 @@ const NavVillager = () => {
     <>
       {/* Top Navigation */}
       <div className="villager-top-nav">
-        <Link to="/villagerhome" className="vnav-item">Home</Link>
+        <Link to="/villagerDashboard" className="vnav-item">Home</Link>
         <Link to="/villagerappointments" className="vnav-item">Appointments</Link>
         <Link to="/villagertickets" className="vnav-item">Tickets</Link>
         <Link to="/villagerprocedures" className="vnav-item">Procedures</Link>

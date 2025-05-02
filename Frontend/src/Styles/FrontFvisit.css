@@ -1,0 +1,234 @@
+/* FrontFvisit.css */
+
+/* Main Container */
+.fieldvisit-grame-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading */
+  .fieldvisit-grame-heading {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .fieldvisit-grame-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border-radius: 2px;
+  }
+  
+  /* Form and Calendar Layout */
+  .fieldvisit-grame-form-calendar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    .fieldvisit-grame-form-calendar {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+/* Calendar Container */
+.fieldvisit-grame-calendar {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Calendar Styling */
+  .fieldvisit-grame-calendar-custom {
+    width: 100% !important;
+    border: none !important;
+    font-family: inherit !important;
+  }
+  
+  .react-calendar {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: white !important;
+    border: none !important;
+  }
+  
+  .react-calendar__navigation button {
+    color: #2c3e50 !important;
+    min-width: 44px !important;
+    background: none !important;
+    font-size: 16px !important;
+    margin-top: 8px !important;
+  }
+  
+  .react-calendar__tile {
+    padding: 10px !important;
+  }
+  
+  .react-calendar__tile--active {
+    background: #3498db !important;
+    color: white !important;
+  }
+  
+  .fieldvisit-grame-highlight {
+    background: #e74c3c !important;
+    color: white !important;
+    border-radius: 50% !important;
+  }
+  /* Form Styling */
+  .fieldvisit-grame-form {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .fieldvisit-grame-form .form-control,
+  .fieldvisit-grame-form .form-select {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+  }
+  
+  .fieldvisit-grame-form .form-control:focus,
+  .fieldvisit-grame-form .form-select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+  }
+  
+  /* Buttons */
+  .fieldvisit-grame-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+  }
+  
+  .fieldvisit-grame-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+  }
+  
+  .btn-info {
+    background: linear-gradient(135deg, #3498db, #9b59b6);
+  }
+  
+  .btn-danger {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+  }
+  
+  /* Visit List */
+  .fieldvisit-grame-visit-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .fieldvisit-grame-visit-item {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-left: 4px solid #3498db;
+  }
+  
+  .fieldvisit-grame-visit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .fieldvisit-grame-visit-details {
+    margin-bottom: 1rem;
+  }
+  
+  .fieldvisit-grame-visit-details p {
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  
+  .fieldvisit-grame-visit-details strong {
+    color: #2c3e50;
+  }
+  
+  .fieldvisit-grame-button-group {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  /* Modal Styling */
+  .modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-header {
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    color: white;
+    border-radius: 15px 15px 0 0 !important;
+    border: none;
+  }
+  
+  .modal-title {
+    font-weight: 600;
+  }
+  
+  /* Toast Notifications */
+  .Toastify__toast {
+    border-radius: 8px !important;
+    font-family: inherit !important;
+  }
+  
+  .Toastify__toast--success {
+    background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+  }
+  
+  .Toastify__toast--error {
+    background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .fieldvisit-grame-visit-item {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  .fieldvisit-grame-visit-item:nth-child(1) { animation-delay: 0.1s; }
+  .fieldvisit-grame-visit-item:nth-child(2) { animation-delay: 0.2s; }
+  .fieldvisit-grame-visit-item:nth-child(3) { animation-delay: 0.3s; }
+  .fieldvisit-grame-visit-item:nth-child(4) { animation-delay: 0.4s; }
+  .fieldvisit-grame-visit-item:nth-child(5) { animation-delay: 0.5s; }

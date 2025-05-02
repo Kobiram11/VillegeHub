@@ -3,14 +3,13 @@ import axios from 'axios';
 import '../../Styles/procedures.css';
 
 const UpdateProcedure = () => {
-  const [searchName, setSearchName] = useState(''); // For searching service
-  const [serviceDetails, setServiceDetails] = useState(null); // To store fetched service details
+  const [searchName, setSearchName] = useState('');
+  const [serviceDetails, setServiceDetails] = useState(null);
   const [updatedServiceName, setUpdatedServiceName] = useState('');
   const [updatedServiceDetail, setUpdatedServiceDetail] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Handle search
   const handleSearch = async () => {
     try {
       const response = await axios.get(`http://localhost:8070/procedures/search`, {
@@ -19,7 +18,7 @@ const UpdateProcedure = () => {
 
       if (response.data.length > 0) {
         const procedure = response.data[0];
-        setServiceDetails(procedure);  // Store the service details
+        setServiceDetails(procedure);
         setUpdatedServiceName(procedure.ServiceName);
         setUpdatedServiceDetail(procedure.ServiceDetail);
         setErrorMessage('');
@@ -33,21 +32,18 @@ const UpdateProcedure = () => {
     }
   };
 
-  // Handle update
   const handleUpdate = async (e) => {
     e.preventDefault();
     if (!serviceDetails) return;
 
     try {
-      // Updating using the original ServiceName
       const response = await axios.put(`http://localhost:8070/procedures/${serviceDetails._id}`, {
-        ServiceName: updatedServiceName,       // The updated service name
-        ServiceDetail: updatedServiceDetail    // The updated service detail
+        ServiceName: updatedServiceName,
+        ServiceDetail: updatedServiceDetail
       });
 
       if (response.status === 200) {
         setSuccessMessage('Procedure updated successfully!');
-        // Reset fields
         setSearchName('');
         setServiceDetails(null);
         setUpdatedServiceName('');
@@ -65,47 +61,49 @@ const UpdateProcedure = () => {
   };
 
   return (
-    <div className="update-procedure-container">
-      <h2>Update Procedure</h2>
+    <div className="update-procedure-grama-container">
+      <h2 className="update-procedure-grama-title">Update Procedure</h2>
       
-      <div className="search-section">
+      <div className="update-procedure-grama-search-section">
         <input
           type="text"
           placeholder="Search by Service Name"
           value={searchName}
           onChange={(e) => setSearchName(e.target.value)}
-          className="search-input"
+          className="update-procedure-grama-search-input"
         />
-        <button onClick={handleSearch} className="search-btn">Search</button>
+        <button onClick={handleSearch} className="update-procedure-grama-search-btn">Search</button>
       </div>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && <p className="update-procedure-grama-error">{errorMessage}</p>}
       
       {serviceDetails && (
-        <form className="update-form" onSubmit={handleUpdate}>
-          <div>
+        <form className="update-procedure-grama-form" onSubmit={handleUpdate}>
+          <div className="update-procedure-grama-input-group">
             <label>Service Name:</label>
             <input
               type="text"
               value={updatedServiceName}
               onChange={(e) => setUpdatedServiceName(e.target.value)}
               required
+              className="update-procedure-grama-input"
             />
           </div>
-          <div>
+          <div className="update-procedure-grama-input-group">
             <label>Service Detail:</label>
             <input
               type="text"
               value={updatedServiceDetail}
               onChange={(e) => setUpdatedServiceDetail(e.target.value)}
               required
+              className="update-procedure-grama-input"
             />
           </div>
-          <button type="submit" className="submit-btn">Update</button>
+          <button type="submit" className="update-procedure-grama-submit-btn">Update</button>
         </form>
       )}
 
-      {successMessage && <p className="success-message">{successMessage}</p>}
+      {successMessage && <p className="update-procedure-grama-success">{successMessage}</p>}
     </div>
   );
 };

@@ -11,7 +11,7 @@ import {
   faBell,
    // Import the Bell icon for Notices
 } from '@fortawesome/free-solid-svg-icons';
-import '../Styles/Navbar.css';
+import '../Styles/NavBar.css';
 
 const NavBar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

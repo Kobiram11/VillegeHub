@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './election.css'; // Create CSS styles separately
+import './election.css'; // Update your CSS file to reflect new class names
 
 const UpdateForm = () => {
   const [nic, setNic] = useState('');
@@ -16,7 +16,6 @@ const UpdateForm = () => {
   const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  // Fetch details by NIC
   const handleFetch = async () => {
     if (!nic) {
       setError('Please enter a NIC');
@@ -33,7 +32,7 @@ const UpdateForm = () => {
         VoterStatus: response.data.VoterStatus,
         Email: response.data.Email,
         FamilyReferenceNumber: response.data.FamilyReferenceNumber,
-        Birthdate: new Date(response.data.Birthdate).toISOString().split('T')[0], // Format date as YYYY-MM-DD
+        Birthdate: new Date(response.data.Birthdate).toISOString().split('T')[0],
       });
       setError('');
       setIsLoading(false);
@@ -43,7 +42,6 @@ const UpdateForm = () => {
     }
   };
 
-  // Handle form input change
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -51,15 +49,14 @@ const UpdateForm = () => {
     });
   };
 
-  // Handle form submission (update details)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
 
     try {
-      const response = await axios.put(`http://localhost:8070/election/update`, {
-        NIC: nic, // NIC will be used to find the record to update
+      await axios.put(`http://localhost:8070/election/update`, {
+        NIC: nic,
         ...formData,
       });
       setSuccess('Update successful!');
@@ -69,75 +66,87 @@ const UpdateForm = () => {
   };
 
   return (
-    <div className="update-form-container">
-      <h2>Update Election Record</h2>
-      {error && <p className="error">{error}</p>}
-      {success && <p className="success">{success}</p>}
-      <div className="nic-lookup">
-        <label>Enter NIC:</label>
+    <div className="election-update-form-container">
+      <h2 className="election-update-title">Update Election Record</h2>
+      {error && <p className="election-update-error">{error}</p>}
+      {success && <p className="election-update-success">{success}</p>}
+      <div className="election-update-nic-lookup">
+        <label className="election-update-label">Enter NIC:</label>
         <input
           type="text"
           value={nic}
           onChange={(e) => setNic(e.target.value)}
           placeholder="Enter NIC"
+          className="election-update-input"
         />
-        <button onClick={handleFetch} disabled={isLoading}>
+        <button
+          onClick={handleFetch}
+          disabled={isLoading}
+          className="election-update-fetch-btn"
+        >
           {isLoading ? 'Loading...' : 'Fetch Details'}
         </button>
       </div>
-      
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Full Name</label>
+
+      <form onSubmit={handleSubmit} className="election-update-form">
+        <div className="election-update-form-group">
+          <label className="election-update-label">Full Name</label>
           <input
             type="text"
             name="FullName"
             value={formData.FullName}
             onChange={handleChange}
             required
+            className="election-update-input"
           />
         </div>
-        <div className="form-group">
-          <label>Voter Status</label>
+        <div className="election-update-form-group">
+          <label className="election-update-label">Voter Status</label>
           <input
             type="text"
             name="VoterStatus"
             value={formData.VoterStatus}
             onChange={handleChange}
             required
+            className="election-update-input"
           />
         </div>
-        <div className="form-group">
-          <label>Email</label>
+        <div className="election-update-form-group">
+          <label className="election-update-label">Email</label>
           <input
             type="email"
             name="Email"
             value={formData.Email}
             onChange={handleChange}
             required
+            className="election-update-input"
           />
         </div>
-        <div className="form-group">
-          <label>Family Reference Number</label>
+        <div className="election-update-form-group">
+          <label className="election-update-label">Family Reference Number</label>
           <input
             type="text"
             name="FamilyReferenceNumber"
             value={formData.FamilyReferenceNumber}
             onChange={handleChange}
             required
+            className="election-update-input"
           />
         </div>
-        <div className="form-group">
-          <label>Birthdate</label>
+        <div className="election-update-form-group">
+          <label className="election-update-label">Birthdate</label>
           <input
             type="date"
             name="Birthdate"
             value={formData.Birthdate}
             onChange={handleChange}
             required
+            className="election-update-input"
           />
         </div>
-        <button type="submit" className="submit-btn">Update Record</button>
+        <button type="submit" className="election-update-submit-btn">
+          Update Record
+        </button>
       </form>
     </div>
   );

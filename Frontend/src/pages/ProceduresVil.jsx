@@ -1,7 +1,5 @@
 //import React, { component } from 'react';
 import NavVillager from '../componets/NavVillager';
-
-import VillagerDashboard from '../componets/procedures/ProcedureVillagerDashboard';
 import ProceduresList from '../componets/procedures/ProceduresList';
 
 const ProceduresVil = () => {
@@ -9,7 +7,6 @@ const ProceduresVil = () => {
     return(
     <div>
         <NavVillager/>
-        <VillagerDashboard/>
         <ProceduresList/>
     
     </div>

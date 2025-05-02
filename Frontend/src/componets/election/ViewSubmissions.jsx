@@ -1,3 +1,5 @@
+// src/components/ViewSubmissions.jsx
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './election.css';
@@ -9,13 +11,12 @@ const ViewSubmissions = () => {
     try {
       const response = await axios.get('http://localhost:8070/election/get');
       console.log('Submissions fetched:', response.data);
-      setSubmissions(response.data);  // Ensure the correct data format
+      setSubmissions(response.data);
     } catch (error) {
       console.error('Error fetching submissions:', error);
     }
   };
 
-  // Use useEffect to call fetchSubmissions when the component mounts
   useEffect(() => {
     fetchSubmissions();
   }, []);
@@ -31,14 +32,14 @@ const ViewSubmissions = () => {
             <th>Voter Status</th>
             <th>Email</th>
             <th>Family Reference Number</th>
-            <th>Birthdate</th> {/* Add Birthdate column */}
-            <th>Actions</th> {/* Placeholder for actions */}
+            <th>Birthdate</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {submissions.length === 0 ? (
             <tr>
-              <td colSpan="7">No submissions available.</td> {/* Update colSpan to 7 */}
+              <td colSpan="7">No submissions available.</td>
             </tr>
           ) : (
             submissions.map((submission) => (
@@ -48,8 +49,8 @@ const ViewSubmissions = () => {
                 <td>{submission.VoterStatus}</td>
                 <td>{submission.Email}</td>
                 <td>{submission.FamilyReferenceNumber}</td>
-                <td>{new Date(submission.Birthdate).toLocaleDateString()}</td> {/* Format Birthdate */}
-                <td> {/* Add any actions here */}</td>
+                <td>{new Date(submission.Birthdate).toLocaleDateString()}</td>
+                <td>{/* Add action buttons here */}</td>
               </tr>
             ))
           )}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../../Styles/Notice/DeleteNotice.css'; // External CSS file
+import '../../Styles/Notice/DeleteNotice.css';
 
 const DeleteNotice = () => {
   const [noticeId, setNoticeId] = useState('');
@@ -32,9 +32,7 @@ const DeleteNotice = () => {
       }
     } catch (error) {
       setError(
-        error.response && error.response.data && error.response.data.message
-          ? error.response.data.message
-          : 'Error fetching notice'
+        error.response?.data?.message || 'Error fetching notice'
       );
       setNotice(null);
       console.error('Error fetching notice:', error);
@@ -64,39 +62,36 @@ const DeleteNotice = () => {
   };
 
   return (
-    <div className="delete-notice-container">
-      <h2 className="delete-heading">Delete Notice</h2>
+    <div className="notice-delete-grama-container">
+      <h2 className="notice-delete-grama-heading">Delete Notice</h2>
 
-      <div>
+      <div className="notice-delete-grama-input-section">
         <input
           type="text"
           placeholder="Enter Notice ID"
           value={noticeId}
           onChange={(e) => setNoticeId(e.target.value)}
-          className="delete-input"
+          className="notice-delete-grama-input"
         />
-        <button
-          onClick={handleSearch}
-          className="delete-button"
-        >
+        <button onClick={handleSearch} className="notice-delete-grama-button">
           Search Notice
         </button>
       </div>
 
-      {loading && <p>Loading...</p>}
-      {error && <p className="error-text">{error}</p>}
+      {loading && <p className="notice-delete-grama-loading">Loading...</p>}
+      {error && <p className="notice-delete-grama-error">{error}</p>}
 
       {notice && (
-        <div className="notice-details">
+        <div className="notice-delete-grama-details">
           <h3>Notice Details</h3>
           <p><strong>Custom ID:</strong> {notice.id}</p>
           <p><strong>Notice Category:</strong> {notice.noticeCategory}</p>
           <p><strong>Description:</strong> {notice.description}</p>
           <p><strong>Created At:</strong> {new Date(notice.createdAt).toLocaleDateString()}</p>
 
-          <div className="notice-buttons">
-            <button onClick={handleDelete} className="delete-button">Delete Notice</button>
-            <button onClick={handleCancel} className="delete-button">Cancel</button>
+          <div className="notice-delete-grama-buttons">
+            <button onClick={handleDelete} className="notice-delete-grama-button">Delete Notice</button>
+            <button onClick={handleCancel} className="notice-delete-grama-button">Cancel</button>
           </div>
         </div>
       )}
