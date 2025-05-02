@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../../Styles/TicketStyle.css';
+
 
 
 const priorities = ['Low', 'Medium', 'High'];

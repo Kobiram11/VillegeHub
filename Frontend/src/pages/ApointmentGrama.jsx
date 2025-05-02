@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ViewAppointments from '../components/appointment/AppointmentDetails';
-import NavBar from '../components/Navbar';
+import ViewAppointments from '../componets/appointment/AppointmentForm';
+import NavBar from '../componets/Navbar';
 
 const Detailsappointment = () => {
 

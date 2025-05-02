@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Typography, Grid, Paper, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import backgroundImage from '../assets/grama.jpg'; 
-import NavBar from '../components/Navbar'; 
+import NavBar from '../componets/Navbar'; 
 
 // Styled components
 const Root = styled('div')(({ theme }) => ({

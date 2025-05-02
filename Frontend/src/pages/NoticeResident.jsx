@@ -1,9 +1,9 @@
 // src/pages/NoticeResident.js
 import React from 'react';
-import NavVillager from '../components/NavVillager';
+import NavVillager from '../componets/NavVillager';
 
-import NoticeResidentDashboard from '../components/notice/NoticeResidentDashboard';
-import NoticeResidentView from '../components/notice/NoticeResidentView';
+import NoticeResidentDashboard from '../componets/notice/NoticeDashboard';
+import NoticeResidentView from '../componets/notice/NoticeResidentDashboard';
 
 
 

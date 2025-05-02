@@ -1,8 +1,8 @@
 //import React, { component } from 'react';
-import NavVillager from '../components/NavVillager';
+import NavVillager from '../componets/NavVillager';
 
-import VillagerDashboard from '../components/procedures/ProcedureVillagerDashboard';
-import ProceduresList from '../components/procedures/ProceduresList';
+import VillagerDashboard from '../componets/procedures/ProcedureVillagerDashboard';
+import ProceduresList from '../componets/procedures/ProceduresList';
 
 const ProceduresVil = () => {
 

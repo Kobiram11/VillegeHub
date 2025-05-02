@@ -1,11 +1,11 @@
 import React from 'react';
 
-import CreateProcedure from '../components/procedures/CreateProcedure';
-import ProceduresList from '../components/procedures/ProceduresList'; 
-import UpdateProcedure from '../components/procedures/UpdateProcedure';
-import DeleteProcedure from '../components/procedures/DeleteProcedure';
-import Dashboard from '../components/procedures/ProceduresGramaDashboard';
-import NavBar from '../components/Navbar';
+import CreateProcedure from '../componets/procedures/CreateProcedure';
+import ProceduresList from '../componets/procedures/ProceduresList'; 
+import UpdateProcedure from '../componets/procedures/UpdateProcedure';
+import DeleteProcedure from '../componets/procedures/DeleteProcedure';
+import Dashboard from '../componets/procedures/ProceduresGramaDashboard';
+import NavBar from '../componets/Navbar';
 
 
 const ProceduresGrama = () => {

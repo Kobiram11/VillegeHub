@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../../Styles/TicketStyle.css';
+
 
 export default class CreateProject extends Component {
     constructor(props) {

@@ -1,13 +1,13 @@
 // src/Pages/NoticegramaNiladhari.js
 import React from 'react';
 
-import NoticeDashboard from '../components/notice/NoticeDashboard';
-import AddNotice from '../components/notice/AddNotice';
-import NoticeList from '../components/notice/NoticeList';
-import EditNotice from '../components/notice/EditNotice';
-import DeleteNotice from '../components/notice/DeleteNotice';
-import FindNotice from '../components/notice/FindNotice';
-import NavBar from '../components/Navbar';
+import NoticeDashboard from '../componets/notice/NoticeDashboard';
+import AddNotice from '../componets/notice/AddNotice';
+import NoticeList from '../componets/notice/NoticeList';
+import EditNotice from '../componets/notice/EditNotice';
+import DeleteNotice from '../componets/notice/DeleteNotice';
+import FindNotice from '../componets/notice/FindNotice';
+import NavBar from '../componets/Navbar';
 
 
 const NoticeGramaNiladhari = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
-import NavVillager from '../components/NavVillager';
+import NavVillager from '../componets/NavVillager';
 
-import CreateTicket from '../components/ticket/create-ticket.component';
+import CreateTicket from '../componets/ticket/create-ticket.component';
 
 const TicketVill = () => {
 

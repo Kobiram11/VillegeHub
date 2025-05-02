@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../../Styles/TicketStyle.css';
 
-import CreateUser from "./create-user.component";
 
 const User = props => (
     <tr>

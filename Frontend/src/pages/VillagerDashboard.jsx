@@ -4,8 +4,8 @@ import { styled } from '@mui/material/styles';
 import backgroundImage from '../assets/resident.jpg';
 import img1 from '../assets/resident.jpg';
 import img2 from '../assets/back2.jpg';
-import AddUser from '../components/login/AddUser';
-import NavVillager from '../components/NavVillager';
+import AddUser from '../componets/login/AddUser';
+import NavVillager from '../componets/NavVillager';
 
 // Styled components
 const Root = styled('div')(({ theme }) => ({

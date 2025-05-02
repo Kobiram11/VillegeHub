@@ -1,7 +1,7 @@
 import React from 'react';
-import NavVillager from '../components/NavVillager';
+import NavVillager from '../componets/NavVillager';
 
-import AppointmentUserInterface from '../components/appointment/AppointmentUserInterface';
+import AppointmentUserInterface from '../componets/appointment/AppointmentUserInterface';
 
 const Userappointment = () => {
 

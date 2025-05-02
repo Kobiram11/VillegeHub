@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';  // Import Link from react-router-dom
 
-import AddHouse from '../components/household/AddHouse.js';
-import AddFamily from '../components/household/AddFamily.js';
-import AddMember from '../components/household/AddMember.js';
-import HouseList from '../components/household/HouseList.js';
-import HouseDetailsById from '../components/household/HouseDetailsById.js';
-import MemberDetailsById from '../components/household/MemberDetailsById.js';
-import GetFamilyByRef from '../components/household/GetFamilyByRef.js';
-import StatsDisplay from '../components/household/StatsDisplay.js';
+import AddHouse from '../componets/household/AddHouse.jsx';
+import AddFamily from '../componets/household/AddFamily.jsx';
+import AddMember from '../componets/household/AddMember.jsx';
+import HouseList from '../componets/household/HouseList.jsx';
+import HouseDetailsById from '../componets/household/HouseDetailsById.jsx';
+import MemberDetailsById from '../componets/household/MemberDetailsById.jsx';
+import GetFamilyByRef from '../componets/household/GetFamilyByRef.jsx';
+import StatsDisplay from '../componets/household/StatsDisplay.jsx';
 import '../Styles/houseStyles.css';
-import NavBar from '../components/Navbar'; 
+import NavBar from '../componets/Navbar.jsx'; 
 
 const HouseholdPage = () => {
   const [activeForm, setActiveForm] = useState(null); // State to track which form to display

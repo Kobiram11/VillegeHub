@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom'; // Import useParams hook
-import '../../Styles/TicketStyle.css';
+
 
 const priorities = ['Low', 'Medium', 'High'];
 const statuses = ['Open', 'In Progress', 'Resolved'];

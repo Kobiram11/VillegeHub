@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Ticket from './ticket-display';
 
 export default class TicketList extends Component {
 	constructor(props) {
