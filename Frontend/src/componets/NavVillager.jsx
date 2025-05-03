@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faHouse, 
@@ -10,10 +10,13 @@ import {
   faClipboardList // New icon for Notices
 } from '@fortawesome/free-solid-svg-icons';
 import '../Styles/NavVillager.css';
+import { AuthContext } from '../App.jsx';
 
 const NavVillager = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation(); // to track the selected item
+  const navigate = useNavigate();
+  const { setIsAuthenticated, setUserRole } = useContext(AuthContext);
 
   // Function to detect hover and expand the sidebar
   const handleMouseEnter = () => {
@@ -23,6 +26,14 @@ const NavVillager = () => {
   // Function to detect when hover ends and collapse the sidebar
   const handleMouseLeave = () => {
     setIsSidebarOpen(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+    setIsAuthenticated(false);
+    setUserRole('');
+    navigate('/login');
   };
 
   return (
@@ -35,6 +46,9 @@ const NavVillager = () => {
         <Link to="/villagerprocedures" className="vnav-item">Procedures</Link>
         <Link to="/notices" className="vnav-item">Notices</Link>
         <Link to="/voter-rights-request" className="vnav-item">Election</Link>
+        <button onClick={handleLogout} style={{ marginLeft: '10px', cursor: 'pointer', background: 'none', border: 'none', color: 'blue', textDecoration: 'underline' }}>
+          Logout
+        </button>
       </div>
 
       {/* Side Navigation */}
@@ -44,7 +58,7 @@ const NavVillager = () => {
         onMouseLeave={handleMouseLeave}
       >
         <div className="villager-nav-links">
-          <Link to="/villagerhome" className={`nav-link ${location.pathname === '/villagerhome' ? 'active' : ''}`}>
+          <Link to="/villagerDashboard" className={`nav-link ${location.pathname === '/villagerhome' ? 'active' : ''}`}>
             <FontAwesomeIcon icon={faHouse} className="nav-icon" />
             {isSidebarOpen && <span>Home</span>}
           </Link>

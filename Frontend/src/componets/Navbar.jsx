@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHouse,
@@ -11,11 +11,14 @@ import {
   faBell,
    // Import the Bell icon for Notices
 } from '@fortawesome/free-solid-svg-icons';
-import '../Styles/Navbar.css';
+//import '../Styles/Navbar.css';
+import { AuthContext } from '../App';
 
 const NavBar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation(); // to track the selected item
+  const navigate = useNavigate();
+  const { setIsAuthenticated, setUserRole } = useContext(AuthContext);
 
   // Function to detect hover and expand the sidebar
   const handleMouseEnter = () => {
@@ -25,6 +28,14 @@ const NavBar = () => {
   // Function to detect when hover ends and collapse the sidebar
   const handleMouseLeave = () => {
     setIsSidebarOpen(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+    setIsAuthenticated(false);
+    setUserRole('');
+    navigate('/login');
   };
 
   return (
@@ -38,6 +49,9 @@ const NavBar = () => {
         <Link to="/election">Election</Link>
         <Link to="/procedures">Procedures</Link>
         <Link to="/gramaNotices">Notices</Link>
+        <button onClick={handleLogout} style={{ marginLeft: '10px', cursor: 'pointer', background: 'none', border: 'none', color: 'blue', textDecoration: 'underline' }}>
+          Logout
+        </button>
       </div>
 
       {/* Side Navigation */}

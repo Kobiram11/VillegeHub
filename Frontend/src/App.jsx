@@ -19,6 +19,7 @@ import Detailsappointment from './pages/ApointmentGrama.jsx';
 import Userappointment from './pages/ApointmentUser.jsx';
 import VillagerDashboard from './pages/VillagerDashboard.jsx';
 import GramaNiladhariDashboard from './pages/GramaNiladhariDashboard.jsx';
+import AddUser from './componets/login/AddUser.jsx';
 
 const theme = createTheme({
   palette: {
@@ -80,11 +81,17 @@ function App() {
   }
 
   return (
+    
+    
+   
+  
+    
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, userRole, setUserRole }}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <BrowserRouter>
           <Routes>
+ 
 
             {/* Public Login Route */}
             <Route path="/login" element={<UserLogin />} />
@@ -104,6 +111,7 @@ function App() {
               path="/gramaniladharidashboard"
               element={isAuthenticated && userRole === 'gramaNiladhari' ? <GramaNiladhariDashboard /> : <Navigate to="/login" />}
             />
+               <Route path="/AddUser" element={<AddUser />} />
             <Route
               path="/election"
               element={isAuthenticated && userRole === 'gramaNiladhari' ? <ElectionGrama /> : <Navigate to="/login" />}

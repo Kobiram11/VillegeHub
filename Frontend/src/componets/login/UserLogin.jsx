@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../App.jsx';
 
 const UserLogin = () => {
   const [email, setEmail] = useState('');
@@ -8,6 +9,8 @@ const UserLogin = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const { setIsAuthenticated, setUserRole } = useContext(AuthContext);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -39,17 +42,22 @@ const UserLogin = () => {
       localStorage.setItem('authToken', token);
       localStorage.setItem('user', JSON.stringify(user));
 
+      setIsAuthenticated(true);
       switch (user.userType) {
         case 'Resident':
+          setUserRole('resident');
           navigate('/villagerDashboard');
           break;
         case 'Grama Niladhari':
+          setUserRole('gramaNiladhari');
           navigate('/gramaniladharidashboard');
           break;
         case 'Divisional Secrateriat':
+          setUserRole('divisionalSecrateriat');
           navigate('/divDash');
           break;
         default:
+          setUserRole('');
           navigate('/villagerDashboard');
       }
     } catch (err) {
