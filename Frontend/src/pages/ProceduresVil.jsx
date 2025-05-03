@@ -7,8 +7,9 @@ const ProceduresVil = () => {
     return(
     <div>
         <NavVillager/>
+        <div style={{ marginTop: '80px' }}>
         <ProceduresList/>
-    
+        </div>
     </div>
     )
 };

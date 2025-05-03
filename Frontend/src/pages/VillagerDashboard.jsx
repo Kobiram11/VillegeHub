@@ -15,7 +15,7 @@ const Root = styled('div')({
 
 const ContentWrapper = styled('div')({
   flexGrow: 1,
-  marginLeft: '80px', // Leave space for sidebar
+  marginLeft: '80px', // leave space for sidebar
   position: 'relative',
   overflow: 'hidden',
 });
@@ -37,7 +37,7 @@ const Slide = styled('div')(({ active }) => ({
   backgroundPosition: 'center',
   transition: 'opacity 1s ease-in-out',
   opacity: active ? 1 : 0,
-  zIndex: 1,
+  zIndex: 0, // ✅ set to back
 }));
 
 const Overlay = styled('div')({
@@ -47,7 +47,7 @@ const Overlay = styled('div')({
   width: '100%',
   height: '100%',
   backgroundColor: 'rgba(0, 0, 0, 0.7)',
-  zIndex: 2,
+  zIndex: 0, // ✅ set to back
 });
 
 // === Text Styling ===
@@ -59,7 +59,7 @@ const TextBackground = styled('div')({
   backgroundColor: 'rgba(0, 0, 0, 0.6)',
   padding: '20px',
   borderRadius: '8px',
-  zIndex: 3,
+  zIndex: 3, // ✅ above background
   textAlign: 'center',
 });
 
@@ -118,7 +118,11 @@ const VillagerDashboard = () => {
 
   return (
     <>
-      <NavVillager />
+      {/* ✅ Nav on top with zIndex */}
+      <div style={{ position: 'relative', zIndex: 10 }}>
+        <NavVillager />
+      </div>
+
       <Root>
         <ContentWrapper>
           <SlideshowContainer>
@@ -150,7 +154,7 @@ const VillagerDashboard = () => {
             </TextBackground>
           </SlideshowContainer>
 
-          {/* Register Modal */}
+          {/* Modal */}
           <Dialog open={openModal} onClose={handleCloseModal} fullWidth maxWidth="sm">
             <DialogTitle>Register Now</DialogTitle>
             <DialogContent>

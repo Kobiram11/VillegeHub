@@ -5,43 +5,43 @@ from PIL import Image
 import io
 import re
 
-# Set the path to Tesseract OCR (✅ update if installed in another path)
+# 👉 Add this line after importing pytesseract
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 app = Flask(__name__)
-CORS(app)  # Allow frontend access (localhost:3000)
+CORS(app)
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file uploaded'}), 400
+    if 'document' not in request.files:
+        return jsonify({'error': 'No document uploaded'}), 400
 
-    file = request.files['file']
+    file = request.files['document']
+    image_bytes = file.read()
+    if not image_bytes:
+        return jsonify({'error': 'Uploaded file is empty'}), 400
 
     try:
-        image = Image.open(io.BytesIO(file.read()))
+        image = Image.open(io.BytesIO(image_bytes))
         text = pytesseract.image_to_string(image)
-        print("🔍 OCR Text:\n", text)  # ✅ See what was detected
 
-        # Extract data using simple regex
-        name = re.search(r'Name:\s*(.*)', text)
-        nic = re.search(r'NIC:\s*(.*)', text)
-        dob = re.search(r'DOB:\s*(.*)', text)
+        name = re.search(r'(?i)Name:\s*(.*)', text)
+        nic = re.search(r'(?i)NIC:\s*(.*)', text)
+        dob = re.search(r'(?i)DOB:\s*(.*)', text)
+        email = re.search(r'(?i)Email:\s*(.*)', text)
+        family_ref = re.search(r'(?i)Family Ref(?:erence)?:\s*(.*)', text)
 
-        return jsonify({
+        extracted = {
             'name': name.group(1).strip() if name else '',
             'nic': nic.group(1).strip() if nic else '',
-            'dob': dob.group(1).strip() if dob else ''
-        })
+            'dob': dob.group(1).strip() if dob else '',
+            'email': email.group(1).strip() if email else '',
+            'family_ref': family_ref.group(1).strip() if family_ref else ''
+        }
 
+        return jsonify({'success': True, 'data': extracted})
     except Exception as e:
-        print("❌ Error:", str(e))
-        return jsonify({'error': 'OCR processing failed'}), 500
-
-# Default route (optional: for health check)
-@app.route('/')
-def index():
-    return jsonify({'message': 'OCR API is running'}), 200
+        return jsonify({'error': 'OCR processing failed', 'details': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

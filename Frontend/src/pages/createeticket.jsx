@@ -8,8 +8,9 @@ const TicketVill = () => {
     return (
         <div>
             <NavVillager/>
+            <div style={{ marginTop: '80px' }}>
             <CreateTicket/>
-
+            </div>
         </div>
 
 );

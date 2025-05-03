@@ -6,7 +6,9 @@ const Filedvisit = () => {
     return (
         <div className="form-container">
           <NavBar/>
+          <div style={{ marginTop: '80px' }}>
         <FrontFvisit/>
+        </div>
       </div>
     );
 
