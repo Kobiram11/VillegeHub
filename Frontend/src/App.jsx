@@ -93,6 +93,8 @@ function App() {
           <Routes>
  
 
+            <Route path="/" element={<VillagerDashboard />} />
+
             {/* Public Login Route */}
             <Route path="/login" element={<UserLogin />} />
 

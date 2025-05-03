@@ -11,6 +11,7 @@ import {
   faBell,
    // Import the Bell icon for Notices
 } from '@fortawesome/free-solid-svg-icons';
+import '../Styles/NavBar.css';
 //import '../Styles/Navbar.css';
 import { AuthContext } from '../App';
 

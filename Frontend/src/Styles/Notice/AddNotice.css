@@ -1,0 +1,142 @@
+/* AddNotice.css */
+
+/* Main Container */
+.add-notice-grama-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  /* Heading */
+  .add-notice-grama-heading {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .add-notice-grama-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border-radius: 2px;
+  }
+  
+  /* Form */
+  .add-notice-grama-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* Input Fields */
+  .add-notice-grama-form-input,
+  .add-notice-grama-form-textarea {
+    padding: 0.75rem 1.25rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+  }
+  
+  .add-notice-grama-form-input:focus,
+  .add-notice-grama-form-textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+  
+  .add-notice-grama-form-textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  .add-notice-grama-form-input::placeholder,
+  .add-notice-grama-form-textarea::placeholder {
+    color: #95a5a6;
+  }
+  
+  /* Select Dropdown */
+  .add-notice-grama-form-input[type="select"] {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+  }
+  
+  /* Buttons */
+  .add-notice-grama-btn {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+  }
+  
+  .add-notice-grama-submit-btn {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+  }
+  
+  .add-notice-grama-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+  }
+  
+  .add-notice-grama-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .add-notice-grama-cancel-btn {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+    color: white;
+  }
+  
+  .add-notice-grama-cancel-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(149, 165, 166, 0.4);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .add-notice-grama-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+    
+    .add-notice-grama-heading {
+      font-size: 1.5rem;
+    }
+  }

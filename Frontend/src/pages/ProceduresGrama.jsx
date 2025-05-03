@@ -4,7 +4,6 @@ import CreateProcedure from '../componets/procedures/CreateProcedure';
 import ProceduresList from '../componets/procedures/ProceduresList'; 
 import UpdateProcedure from '../componets/procedures/UpdateProcedure';
 import DeleteProcedure from '../componets/procedures/DeleteProcedure';
-import Dashboard from '../componets/procedures/ProceduresGramaDashboard';
 import NavBar from '../componets/Navbar';
 
 
@@ -14,7 +13,6 @@ const ProceduresGrama = () => {
     <div>
 
         <NavBar/>
-        <Dashboard/>
         <CreateProcedure/>
         <ProceduresList/>
         <UpdateProcedure/>

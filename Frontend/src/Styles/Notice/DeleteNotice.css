@@ -1,0 +1,202 @@
+/* DeleteNotice.css */
+
+/* Main Container */
+.notice-delete-grama-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  /* Heading */
+  .notice-delete-grama-heading {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .notice-delete-grama-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+    border-radius: 2px;
+  }
+  
+  /* Input Section */
+  .notice-delete-grama-input-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .notice-delete-grama-input {
+    flex: 1;
+    padding: 0.75rem 1.25rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  .notice-delete-grama-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+  
+  /* Buttons */
+  .notice-delete-grama-button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+  }
+  
+  .notice-delete-grama-input-section .notice-delete-grama-button {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    box-shadow: 0 2px 5px rgba(41, 128, 185, 0.3);
+  }
+  
+  .notice-delete-grama-input-section .notice-delete-grama-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+  }
+  
+  /* Notice Details */
+  .notice-delete-grama-details {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    border-left: 4px solid #e74c3c;
+    animation: slideIn 0.5s ease;
+  }
+  
+  .notice-delete-grama-details h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+  
+  .notice-delete-grama-details p {
+    margin-bottom: 0.75rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  .notice-delete-grama-details strong {
+    color: #2c3e50;
+    font-weight: 600;
+  }
+  
+  /* Action Buttons */
+  .notice-delete-grama-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .notice-delete-grama-buttons .notice-delete-grama-button {
+    flex: 1;
+    padding: 0.75rem;
+  }
+  
+  .notice-delete-grama-buttons .notice-delete-grama-button:first-child {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    box-shadow: 0 2px 5px rgba(231, 76, 60, 0.3);
+  }
+  
+  .notice-delete-grama-buttons .notice-delete-grama-button:first-child:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+  }
+  
+  .notice-delete-grama-buttons .notice-delete-grama-button:last-child {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+    color: white;
+    box-shadow: 0 2px 5px rgba(149, 165, 166, 0.3);
+  }
+  
+  .notice-delete-grama-buttons .notice-delete-grama-button:last-child:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(149, 165, 166, 0.4);
+  }
+  
+  /* Messages */
+  .notice-delete-grama-loading {
+    text-align: center;
+    color: #3498db;
+    margin: 1rem 0;
+    font-weight: 500;
+  }
+  
+  .notice-delete-grama-error {
+    text-align: center;
+    color: #e74c3c;
+    padding: 0.75rem;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 8px;
+    margin: 1rem 0;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .notice-delete-grama-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+    
+    .notice-delete-grama-input-section {
+      flex-direction: column;
+    }
+    
+    .notice-delete-grama-buttons {
+      flex-direction: column;
+    }
+    
+    .notice-delete-grama-button {
+      width: 100%;
+    }
+  }

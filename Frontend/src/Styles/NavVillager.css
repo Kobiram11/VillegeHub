@@ -1,0 +1,138 @@
+/* Top Navigation */
+.villager-top-nav {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #8B4513; /* Rich Saddle Brown */
+  padding: 10px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+
+.vnav-item {
+  color: #f1e9e0;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.vnav-item:hover {
+  background-color: #FF8C00;
+  transform: scale(1.05);
+  color: #f1e9e0;
+  text-decoration: none;
+}
+
+/* Sidebar Styles */
+.villager-side-nav {
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  background-color: #FFDEAD;
+  color: #8B4513;
+  transition: width 0.3s ease;
+  overflow-y: auto;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  height: calc(100vh - 50px);
+  z-index: 1;
+  text-decoration: none;
+}
+
+.villager-side-nav.open {
+  width: 200px;
+}
+
+.villager-side-nav.collapsed {
+  width: 80px;
+}
+
+.villager-nav-links {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.villager-nav-links .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #8B4513;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.villager-nav-links .nav-link:hover {
+  background-color: #FFA07A;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+.villager-nav-links .nav-link.active {
+  background-color: #e7602a;
+  color: white;
+}
+
+.nav-icon {
+  margin-right: 20px;
+  font-size: 1.5em;
+}
+
+/* Show/hide text inside sidebar */
+.villager-side-nav.open .villager-nav-links .nav-link {
+  justify-content: flex-start;
+}
+
+.villager-side-nav.collapsed .nav-icon {
+  margin-right: 0;
+}
+
+.villager-side-nav.collapsed .nav-link span {
+  display: none;
+}
+
+.villager-side-nav.open .nav-link span {
+  display: inline;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 50px);
+}
+
+.villager-nav-links .nav-link:hover span {
+  font-size: 1rem;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .villager-top-nav {
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  .vnav-item {
+    font-size: 16px;
+  }
+
+  .villager-side-nav {
+    width: 50px;
+  }
+
+  .villager-side-nav.open {
+    width: 180px;
+  }
+
+  .nav-icon {
+    font-size: 18px;
+  }
+}

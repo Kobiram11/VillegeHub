@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './EditSubmissions';
-import ElectionReportButton from './ElectionReport';  // Import the report generation component
+import './EditSubmissions'; // Ensure your styles match updated class names
+import ElectionReportButton from './ElectionReport';
 
 const GetResidents = () => {
   const [residents, setResidents] = useState([]);
@@ -24,21 +24,21 @@ const GetResidents = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="election-getresidents-loading">Loading...</p>;
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return <p className="election-getresidents-error">{error}</p>;
   }
 
   return (
-    <div className="get-residents">
-      <h2>Registered Residents</h2>
+    <div className="election-getresidents-container">
+      <h2 className="election-getresidents-title">Registered Residents</h2>
       {residents.length === 0 ? (
-        <p>No residents found.</p>
+        <p className="election-getresidents-empty">No residents found.</p>
       ) : (
         <>
-          <table>
+          <table className="election-getresidents-table">
             <thead>
               <tr>
                 <th>NIC</th>
@@ -60,8 +60,10 @@ const GetResidents = () => {
               ))}
             </tbody>
           </table>
-          {/* Add the report generation button */}
-          <ElectionReportButton residents={residents} />
+
+          <div className="election-getresidents-report-button">
+            <ElectionReportButton residents={residents} />
+          </div>
         </>
       )}
     </div>

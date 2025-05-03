@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../../Styles/Notice/EditNotice.css'; // External CSS file
+import '../../Styles/Notice/EditNotice.css';
 
 const EditNotice = () => {
   const [noticeId, setNoticeId] = useState('');
@@ -35,9 +35,7 @@ const EditNotice = () => {
       }
     } catch (error) {
       setError(
-        error.response && error.response.data && error.response.data.message
-          ? error.response.data.message
-          : 'Error fetching notice'
+        error.response?.data?.message || 'Error fetching notice'
       );
       setNotice(null);
       console.error('Error fetching notice:', error);
@@ -74,31 +72,33 @@ const EditNotice = () => {
   };
 
   return (
-    <div className="edit-notice-container">
-      <h2 className="edit-heading">Edit Notice</h2>
+    <div className="edit-notice-grama-container">
+      <h2 className="edit-notice-grama-heading">Edit Notice</h2>
 
-      <div className="search-section">
+      <div className="edit-notice-grama-search-section">
         <input
           type="text"
           placeholder="Enter Notice ID"
           value={noticeId}
           onChange={(e) => setNoticeId(e.target.value)}
-          className="edit-input"
+          className="edit-notice-grama-input"
         />
-        <button onClick={handleSearch} className="edit-button">Search Notice</button>
+        <button onClick={handleSearch} className="edit-notice-grama-button">
+          Search Notice
+        </button>
       </div>
 
-      {loading && <p className="loading-text">Loading...</p>}
-      {error && <p className="error-text">{error}</p>}
+      {loading && <p className="edit-notice-grama-loading">Loading...</p>}
+      {error && <p className="edit-notice-grama-error">{error}</p>}
 
       {notice && (
-        <form onSubmit={handleSubmit} className="edit-form">
-          <label className="edit-label">Notice Category:</label>
+        <form onSubmit={handleSubmit} className="edit-notice-grama-form">
+          <label className="edit-notice-grama-label">Notice Category:</label>
           <select
             value={noticeCategory}
             onChange={(e) => setNoticeCategory(e.target.value)}
             required
-            className="edit-select"
+            className="edit-notice-grama-select"
           >
             <option value="" disabled hidden>
               Select the Notice Category
@@ -111,18 +111,22 @@ const EditNotice = () => {
             <option value="Other">Other</option>
           </select>
 
-          <label className="edit-label">Description:</label>
+          <label className="edit-notice-grama-label">Description:</label>
           <textarea
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
-            className="edit-textarea"
+            className="edit-notice-grama-textarea"
           />
 
-          <div className="edit-button-group">
-            <button type="submit" className="edit-button">Update Notice</button>
-            <button type="button" onClick={handleCancel} className="edit-button">Cancel</button>
+          <div className="edit-notice-grama-button-group">
+            <button type="submit" className="edit-notice-grama-button">
+              Update Notice
+            </button>
+            <button type="button" onClick={handleCancel} className="edit-notice-grama-button">
+              Cancel
+            </button>
           </div>
         </form>
       )}

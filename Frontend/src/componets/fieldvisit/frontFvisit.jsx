@@ -92,7 +92,7 @@ function FrontFvisit() {
   const tileClassName = ({ date, view }) => {
     if (view === 'month') {
       if (highlightedDates.some((d) => d.toDateString() === date.toDateString())) {
-        return 'front-fvisit-highlight';
+        return 'fieldvisit-grame-highlight';
       }
     }
     return null;
@@ -118,15 +118,15 @@ function FrontFvisit() {
   }, [visits]);
 
   return (
-    <div className="front-fvisit-container">
-      <h1 className="front-fvisit-heading">Field Visits</h1>
+    <div className="fieldvisit-grame-container">
+      <h1 className="fieldvisit-grame-heading">Field Visits</h1>
 
-      <div className="front-fvisit-form-calendar">
-        <div className="front-fvisit-calendar">
-          <Calendar tileClassName={tileClassName} className="front-fvisit-calendar-custom" />
+      <div className="fieldvisit-grame-form-calendar">
+        <div className="fieldvisit-grame-calendar">
+          <Calendar tileClassName={tileClassName} className="fieldvisit-grame-calendar-custom" />
         </div>
 
-        <div className="front-fvisit-form">
+        <div className="fieldvisit-grame-form">
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formDate" className="mb-3">
               <Form.Label>Date</Form.Label>
@@ -175,7 +175,7 @@ function FrontFvisit() {
                 onChange={handleInputChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="fieldvisit-grame-btn">
               Add Visit
             </Button>
           </Form>
@@ -234,27 +234,27 @@ function FrontFvisit() {
                 onChange={handleEditInputChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="fieldvisit-grame-btn">
               Update Visit
             </Button>
           </Form>
         </Modal.Body>
       </Modal>
 
-      <ul className="front-fvisit-visit-list">
+      <ul className="fieldvisit-grame-visit-list">
         {visits.map((visit) => (
-          <li key={visit._id} className="front-fvisit-visit-item">
-            <div className="front-fvisit-visit-details">
+          <li key={visit._id} className="fieldvisit-grame-visit-item">
+            <div className="fieldvisit-grame-visit-details">
               <p><strong>Date:</strong> {new Date(visit.date).toLocaleDateString()}</p>
               <p><strong>Location:</strong> {visit.location}</p>
               <p><strong>Purpose:</strong> {visit.purpose}</p>
               <p><strong>Notes:</strong> {visit.notes}</p>
             </div>
-            <div className="front-fvisit-button-group">
-              <Button variant="info" onClick={() => handleEditClick(visit)}>
+            <div className="fieldvisit-grame-button-group">
+              <Button variant="info" onClick={() => handleEditClick(visit)} className="fieldvisit-grame-btn">
                 Edit
               </Button>
-              <Button variant="danger" onClick={() => handleDelete(visit._id)}>
+              <Button variant="danger" onClick={() => handleDelete(visit._id)} className="fieldvisit-grame-btn">
                 Delete
               </Button>
             </div>
