@@ -8,8 +8,9 @@ const Userappointment = () => {
     return (
         <div>
            <NavVillager/>
+           <div style={{ marginTop: '80px' }}>
             <AppointmentUserInterface/>
-
+            </div>
         </div>
 
 );

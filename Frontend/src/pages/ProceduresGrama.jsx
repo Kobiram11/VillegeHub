@@ -13,10 +13,12 @@ const ProceduresGrama = () => {
     <div>
 
         <NavBar/>
+        <div style={{ marginTop: '80px' }}>
         <CreateProcedure/>
         <ProceduresList/>
         <UpdateProcedure/>
         <DeleteProcedure/>
+        </div>
     </div>
     )
 };

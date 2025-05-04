@@ -7,9 +7,10 @@ const Ticket = () => {
     return(
     <div>
         <Navbar/>
+        <div style={{ marginTop: '80px' }}>
         <AdminTickets/>
         <RetrieveTickets/>
-
+        </div>
     
     </div>
     )

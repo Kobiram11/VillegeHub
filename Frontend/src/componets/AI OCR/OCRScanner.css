@@ -1,0 +1,85 @@
+.ocr-uploader-container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .ocr-uploader-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  
+  .ocr-uploader-error {
+    padding: 10px;
+    background-color: #ffebee;
+    border-left: 4px solid #f44336;
+    border-radius: 4px;
+    margin-bottom: 15px;
+  }
+  
+  .ocr-uploader-status {
+    color: #2196f3;
+    font-style: italic;
+    margin-bottom: 15px;
+  }
+  
+  .ocr-uploader-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px dashed #bdc3c7;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .ocr-uploader-input:hover {
+    border-color: #3498db;
+    background-color: #e8f4fc;
+  }
+  
+  .ocr-uploader-input:focus {
+    outline: none;
+    border-color: #2980b9;
+  }
+  
+  .ocr-uploader-button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ocr-uploader-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .ocr-uploader-button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .ocr-uploader-container {
+      padding: 15px;
+      margin: 10px;
+    }
+    
+    .ocr-uploader-title {
+      font-size: 1.2rem;
+    }
+  }

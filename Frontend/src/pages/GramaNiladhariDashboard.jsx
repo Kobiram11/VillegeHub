@@ -51,7 +51,7 @@ const Subtitle = styled(Typography)(({ theme }) => ({
     fontSize: '1.6rem', 
     marginBottom: theme.spacing(3), 
     textShadow: '2px 4px 8px rgba(0, 0, 0, 0.9)', 
-    zIndex: 2,
+    zIndex: 1,
     lineHeight: 1.4, 
 }));
 
@@ -65,8 +65,6 @@ const Card = styled(Paper)(({ theme }) => ({
     width: '90%', 
     maxWidth: '600px',
     textAlign: 'center', 
-    display: 'flex',
-    flexDirection: 'column', 
     alignItems: 'center',
 }));
 
@@ -99,7 +97,7 @@ const GramaNiladhariDashboard = () => {
                 <Grid item xs={12}>
                     <Subtitle variant="h3">Your Gateway to Community Management</Subtitle>
                 </Grid>
-                <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                <Grid item xs={12} style={{ justifyContent: 'center', marginTop: '20px' }}>
                     <Card>
                         <Typography variant="h5" gutterBottom>
                             Connect with your community effortlessly.
