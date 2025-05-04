@@ -149,9 +149,9 @@ const AddUser = () => {
           <option value="" disabled>
             Select User Type
           </option>
-          <option value="Grama Niladhari">Grama Niladhari</option>
+          
           <option value="Resident">Resident</option>
-          <option value="Divisional Secrateriat">Divisional Secrateriat</option>
+          
         </select>
 
         <input
