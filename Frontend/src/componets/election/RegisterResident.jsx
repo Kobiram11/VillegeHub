@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import './election.css'; // Make sure to match styles accordingly
-import { AuthContext } from '../../App';
 import './election.css';
+import { AuthContext } from '../../App';
 import OCRUploader from '../AI OCR/OCRUploader'; // Adjust path as needed
 
 const RegistrationForm = () => {
@@ -21,7 +20,7 @@ const RegistrationForm = () => {
   const [success, setSuccess] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  // ✅ Update form state on input change
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     let updatedData = { ...formData, [name]: value };
@@ -34,7 +33,7 @@ const RegistrationForm = () => {
     setFormData(updatedData);
   };
 
-  // ✅ Auto-fill from OCR
+  // Auto-fill using OCR result
   const handleAutoFill = (data) => {
     const { name, nic, dob, email, family_ref } = data;
 
@@ -54,10 +53,8 @@ const RegistrationForm = () => {
     setFormData(updated);
   };
 
-  // ✅ Validate 10 or 12 character NICs
   const validateNIC = (nic) => nic.length === 10 || nic.length === 12;
 
-  // ✅ Check if user is 18+
   const validateAge = (birthdate) => {
     const today = new Date();
     const birthDate = new Date(birthdate);
@@ -68,7 +65,6 @@ const RegistrationForm = () => {
     return age >= 18;
   };
 
-  // ✅ Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -77,6 +73,7 @@ const RegistrationForm = () => {
       setSuccess('');
       return;
     }
+
     setError('');
     setSuccess('');
 
@@ -181,15 +178,18 @@ const RegistrationForm = () => {
 
         <div className="election-register-form-group">
           <label>Voter Status</label>
-          <input type="text" name="VoterStatus" value={formData.VoterStatus} readOnly />
+          <input
+            type="text"
+            name="VoterStatus"
+            value={formData.VoterStatus}
+            readOnly
+          />
         </div>
 
-        <button type="submit" className="election-register-submit-btn" disabled={!isAuthenticated}>
-          Register
         <button
           type="submit"
           className="election-register-submit-btn"
-          disabled={submitting}
+          disabled={!isAuthenticated || submitting}
         >
           {submitting ? 'Registering...' : 'Register'}
         </button>
