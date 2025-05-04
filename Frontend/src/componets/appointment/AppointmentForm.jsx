@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../../Styles/appointment.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AuthContext } from '../../App';
 
 const AppointmentForm = ({ fetchAppointments }) => {
+    const { isAuthenticated } = useContext(AuthContext);
     const [formData, setFormData] = useState({
         name: '',
         date: '',
@@ -12,12 +14,13 @@ const AppointmentForm = ({ fetchAppointments }) => {
         email: ''
     });
 
-    const [timeSlots, setTimeSlots] = useState([]); // To hold available time slots
-    const [loading, setLoading] = useState(false); // Loading state for form submission
-    const [errors, setErrors] = useState({}); // Store form validation errors
-    const [showModal, setShowModal] = useState(false); // State for success modal visibility
-    const [closeWarning, setCloseWarning] = useState(false); // State for closure warning modal
-    const [minDate, setMinDate] = useState(''); // State for min selectable date
+    const [timeSlots, setTimeSlots] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [errors, setErrors] = useState({});
+    const [showModal, setShowModal] = useState(false);
+    const [closeWarning, setCloseWarning] = useState(false);
+    const [minDate, setMinDate] = useState('');
+    const [showLoginWarning, setShowLoginWarning] = useState(false); // NEW
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,29 +30,27 @@ const AppointmentForm = ({ fetchAppointments }) => {
         }));
     };
 
-    // Function to generate time slots in 30-minute intervals
     const generateTimeSlots = () => {
         const slots = [];
         let currentTime = new Date();
-        currentTime.setHours(9, 0, 0); // Start from 9:00 AM
+        currentTime.setHours(9, 0, 0);
 
         const endTime = new Date();
-        endTime.setHours(15, 0, 0); // End at 3:00 PM
+        endTime.setHours(15, 0, 0);
 
         while (currentTime <= endTime) {
             const hours = String(currentTime.getHours()).padStart(2, '0');
             const minutes = String(currentTime.getMinutes()).padStart(2, '0');
             slots.push(`${hours}:${minutes}`);
-            currentTime.setMinutes(currentTime.getMinutes() + 30); // Increment by 30 minutes
+            currentTime.setMinutes(currentTime.getMinutes() + 30);
         }
 
         return slots;
     };
 
-    // Basic form validation
     const validateForm = () => {
         const newErrors = {};
-        const today = new Date().toISOString().split('T')[0]; // Get today's date in 'YYYY-MM-DD' format
+        const today = new Date().toISOString().split('T')[0];
 
         if (!formData.name) newErrors.name = "Name is required";
         if (!formData.date) {
@@ -70,11 +71,9 @@ const AppointmentForm = ({ fetchAppointments }) => {
         return Object.keys(newErrors).length === 0;
     };
 
-    // Check if the selected date is today and time is after 7:00 AM
     const isAfterSevenAM = () => {
         const selectedDate = new Date(formData.date);
         const [selectedHours] = formData.time.split(':').map(Number);
-
         const now = new Date();
         return (
             selectedDate.toDateString() === now.toDateString() &&
@@ -86,37 +85,32 @@ const AppointmentForm = ({ fetchAppointments }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!validateForm()) return; // Prevent submission if validation fails
+        if (!validateForm()) return;
 
         if (isAfterSevenAM()) {
-            setCloseWarning(true); // Show warning if time is after 7:00 AM
+            setCloseWarning(true);
             return;
         }
 
-        setLoading(true); // Start loading
+        setLoading(true);
         try {
             const response = await fetch('http://localhost:8070/Appointment/appoint', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
 
             if (response.ok) {
-                setShowModal(true); // Show success modal
-                const appointment = await response.json(); // Assuming the response contains the appointment data
+                setShowModal(true);
+                const appointment = await response.json();
 
-                // Trigger the backend route to send the confirmation email
                 await fetch('http://localhost:8070/send-confirmation-email', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         name: formData.name,
                         email: formData.email,
-                        appointmentId: appointment.id, // Assuming the ID is returned in the response
+                        appointmentId: appointment.id,
                         date: formData.date,
                         time: formData.time,
                         purpose: formData.purpose,
@@ -125,7 +119,7 @@ const AppointmentForm = ({ fetchAppointments }) => {
                 });
 
                 setFormData({ name: '', date: '', time: '', purpose: '', contact: '', email: '' });
-                fetchAppointments(); // Refresh appointments list
+                fetchAppointments();
             } else {
                 const errorData = await response.json();
                 alert(`Error: ${errorData.message}`);
@@ -133,19 +127,24 @@ const AppointmentForm = ({ fetchAppointments }) => {
         } catch (error) {
             console.error('Error creating appointment:', error);
         } finally {
-            setLoading(false); // End loading
+            setLoading(false);
         }
     };
 
     useEffect(() => {
-        setTimeSlots(generateTimeSlots()); // Generate time slots on mount
+        setTimeSlots(generateTimeSlots());
         const today = new Date().toISOString().split('T')[0];
-        setMinDate(today); // Prevent selecting past dates
-    }, []);
+        setMinDate(today);
+
+        if (!isAuthenticated) {
+            setShowLoginWarning(true); // Show login popup if not authenticated
+        }
+    }, [isAuthenticated]);
 
     return (
         <div className="appointment-form-container">
             <h1>Appointment Form</h1>
+
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <input
@@ -156,6 +155,7 @@ const AppointmentForm = ({ fetchAppointments }) => {
                         value={formData.name}
                         onChange={handleChange}
                         required
+                        disabled={!isAuthenticated}
                     />
                     {errors.name && <small className="text-danger">{errors.name}</small>}
                 </div>
@@ -168,6 +168,7 @@ const AppointmentForm = ({ fetchAppointments }) => {
                         onChange={handleChange}
                         min={minDate}
                         required
+                        disabled={!isAuthenticated}
                     />
                     {errors.date && <small className="text-danger">{errors.date}</small>}
                 </div>
@@ -178,6 +179,7 @@ const AppointmentForm = ({ fetchAppointments }) => {
                         value={formData.time}
                         onChange={handleChange}
                         required
+                        disabled={!isAuthenticated}
                     >
                         <option value="">Select Time</option>
                         {timeSlots.map((timeSlot) => (
@@ -195,6 +197,7 @@ const AppointmentForm = ({ fetchAppointments }) => {
                         value={formData.purpose}
                         onChange={handleChange}
                         required
+                        disabled={!isAuthenticated}
                     />
                     {errors.purpose && <small className="text-danger">{errors.purpose}</small>}
                 </div>
@@ -215,6 +218,7 @@ const AppointmentForm = ({ fetchAppointments }) => {
                             }
                         }}
                         required
+                        disabled={!isAuthenticated}
                     />
                     {errors.contact && <small className="text-danger">{errors.contact}</small>}
                 </div>
@@ -227,17 +231,19 @@ const AppointmentForm = ({ fetchAppointments }) => {
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        disabled={!isAuthenticated}
                     />
                     {errors.email && <small className="text-danger">{errors.email}</small>}
                 </div>
                 <div className="button-container">
-                    <button type="submit" className="btn btn-primary" disabled={loading}>
+                    <button type="submit" className="btn btn-primary" disabled={loading || !isAuthenticated}>
                         {loading ? 'Submitting...' : 'Submit'}
                     </button>
                     <button
                         type="button"
                         className="btn btn-secondary"
                         onClick={() => setFormData({ name: '', date: '', time: '', purpose: '', contact: '', email: '' })}
+                        disabled={!isAuthenticated}
                     >
                         Reset
                     </button>
@@ -253,7 +259,7 @@ const AppointmentForm = ({ fetchAppointments }) => {
                             <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
                         </div>
                         <div className="modal-body">
-                            <p>Your appointment has been successfully created! Check Your Email and Get the Appoitment ID</p>
+                            <p>Your appointment has been successfully created! Check your email for the appointment ID.</p>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-primary" onClick={() => setShowModal(false)}>Close</button>
@@ -275,6 +281,26 @@ const AppointmentForm = ({ fetchAppointments }) => {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-primary" onClick={() => setCloseWarning(false)}>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Login Required Modal */}
+            <div className={`modal fade ${showLoginWarning ? 'show' : ''}`} style={{ display: showLoginWarning ? 'block' : 'none' }} role="dialog">
+                <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">Login Required</h5>
+                            <button type="button" className="btn-close" onClick={() => setShowLoginWarning(false)}></button>
+                        </div>
+                        <div className="modal-body">
+                            <p>You must be logged in to fill out and submit this appointment form.</p>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-primary" onClick={() => setShowLoginWarning(false)}>
+                                Close
+                            </button>
                         </div>
                     </div>
                 </div>

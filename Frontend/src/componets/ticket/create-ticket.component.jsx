@@ -17,12 +17,16 @@ export default class NewTicketForm extends Component {
             email: '',
             category: '',
             description: '',
-            userEmail: 'user@example.com'
+            userEmail: 'user@example.com',
+            isAuthenticated: false
         };
     }
 
     componentDidMount() {
         this.setState({ category: categories[0] });
+        // Check authentication status from localStorage
+        const token = localStorage.getItem('authToken');
+        this.setState({ isAuthenticated: !!token });
     }
 
     handleChange = (e) => {
@@ -31,6 +35,11 @@ export default class NewTicketForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+
+        if (!this.state.isAuthenticated) {
+            toast.error('Please login to add tickets.', { position: 'top-right', autoClose: 3000 });
+            return;
+        }
 
         const ticket = { ...this.state };
 
@@ -58,6 +67,11 @@ export default class NewTicketForm extends Component {
             <div className="ticket-villeger-container">
                 <ToastContainer />
                 <h3 className="ticket-villeger-heading">Submit a Ticket</h3>
+                {!this.state.isAuthenticated && (
+                    <p style={{ color: 'red', fontWeight: 'bold' }}>
+                        Please login to add tickets.
+                    </p>
+                )}
                 <p className="ticket-villeger-subtext">Fill out the form below to raise a new ticket.</p>
                 <form onSubmit={this.onSubmit}>
                     <div className="ticket-villeger-form-group">
@@ -70,6 +84,7 @@ export default class NewTicketForm extends Component {
                             value={this.state.name}
                             onChange={this.handleChange}
                             required
+                            disabled={!this.state.isAuthenticated}
                         />
                     </div>
 
@@ -83,6 +98,7 @@ export default class NewTicketForm extends Component {
                             value={this.state.address}
                             onChange={this.handleChange}
                             required
+                            disabled={!this.state.isAuthenticated}
                         />
                     </div>
 
@@ -96,6 +112,7 @@ export default class NewTicketForm extends Component {
                             value={this.state.phoneNumber}
                             onChange={this.handleChange}
                             required
+                            disabled={!this.state.isAuthenticated}
                         />
                     </div>
 
@@ -109,6 +126,7 @@ export default class NewTicketForm extends Component {
                             value={this.state.email}
                             onChange={this.handleChange}
                             required
+                            disabled={!this.state.isAuthenticated}
                         />
                     </div>
 
@@ -120,6 +138,7 @@ export default class NewTicketForm extends Component {
                             value={this.state.category}
                             onChange={this.handleChange}
                             required
+                            disabled={!this.state.isAuthenticated}
                         >
                             {categories.map(cat => (
                                 <option key={cat} value={cat}>{cat}</option>
@@ -138,11 +157,12 @@ export default class NewTicketForm extends Component {
                             value={this.state.description}
                             onChange={this.handleChange}
                             required
+                            disabled={!this.state.isAuthenticated}
                         />
                     </div>
 
                     <div className="ticket-villeger-form-group">
-                        <button type="submit" className="ticket-villeger-submit-btn">
+                        <button type="submit" className="ticket-villeger-submit-btn" disabled={!this.state.isAuthenticated}>
                             Submit Ticket
                         </button>
                     </div>

@@ -16,7 +16,7 @@ const NavVillager = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation(); // to track the selected item
   const navigate = useNavigate();
-  const { setIsAuthenticated, setUserRole } = useContext(AuthContext);
+  const { isAuthenticated, setIsAuthenticated, setUserRole } = useContext(AuthContext);
 
   // Function to detect hover and expand the sidebar
   const handleMouseEnter = () => {
@@ -36,6 +36,10 @@ const NavVillager = () => {
     navigate('/login');
   };
 
+  const handleLogin = () => {
+    navigate('/login');
+  };
+
   return (
     <>
       {/* Top Navigation */}
@@ -46,9 +50,16 @@ const NavVillager = () => {
         <Link to="/villagerprocedures" className="vnav-item">Procedures</Link>
         <Link to="/notices" className="vnav-item">Notices</Link>
         <Link to="/voter-rights-request" className="vnav-item">Election</Link>
-        <button onClick={handleLogout} style={{ marginLeft: '10px', cursor: 'pointer', background: 'none', border: 'none', color: 'blue', textDecoration: 'underline' }}>
-          Logout
-        </button>
+        {isAuthenticated ? (
+          
+          <button onClick={handleLogout} style={{ marginLeft: '10px', cursor: 'pointer', background: 'none', border: 'none', color: 'blue', textDecoration: 'underline' }}>
+            Logout
+          </button>
+        ) : (
+          <button onClick={handleLogin} style={{ marginLeft: '10px', cursor: 'pointer', background: 'none', border: 'none', color: 'blue', textDecoration: 'underline' }}>
+            Login
+          </button>
+        )}
       </div>
 
       {/* Side Navigation */}

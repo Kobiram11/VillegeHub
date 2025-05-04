@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import './election.css'; // Make sure to match styles accordingly
+import { AuthContext } from '../../App';
 
 const RegistrationForm = () => {
+  const { isAuthenticated } = useContext(AuthContext);
+
   const [formData, setFormData] = useState({
     FullName: '',
     NIC: '',
@@ -49,6 +52,12 @@ const RegistrationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!isAuthenticated) {
+      setError('Please login to register for elections.');
+      setSuccess('');
+      return;
+    }
+
     if (!validateNIC(formData.NIC)) {
       setError('NIC must be exactly 10 characters.');
       setSuccess('');
@@ -94,6 +103,7 @@ const RegistrationForm = () => {
             value={formData.FullName}
             onChange={handleChange}
             required
+            disabled={!isAuthenticated}
           />
         </div>
 
@@ -105,6 +115,7 @@ const RegistrationForm = () => {
             value={formData.NIC}
             onChange={handleChange}
             required
+            disabled={!isAuthenticated}
           />
         </div>
 
@@ -116,6 +127,7 @@ const RegistrationForm = () => {
             value={formData.Email}
             onChange={handleChange}
             required
+            disabled={!isAuthenticated}
           />
         </div>
 
@@ -127,6 +139,7 @@ const RegistrationForm = () => {
             value={formData.FamilyReferenceNumber}
             onChange={handleChange}
             required
+            disabled={!isAuthenticated}
           />
         </div>
 
@@ -138,6 +151,7 @@ const RegistrationForm = () => {
             value={formData.Birthdate}
             onChange={handleChange}
             required
+            disabled={!isAuthenticated}
           />
         </div>
 
@@ -151,7 +165,7 @@ const RegistrationForm = () => {
           />
         </div>
 
-        <button type="submit" className="election-register-submit-btn">
+        <button type="submit" className="election-register-submit-btn" disabled={!isAuthenticated}>
           Register
         </button>
       </form>
